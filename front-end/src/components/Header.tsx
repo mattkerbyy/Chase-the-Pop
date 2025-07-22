@@ -68,7 +68,7 @@ export function Header() {
           />
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-foreground tracking-tight">Chase the Pop</span>
-            <span className="text-xs text-muted-foreground font-medium">Premium Collectibles</span>
+            <span className="text-xs text-muted-foreground font-medium">Collectibles Store</span>
           </div>
         </div>
         

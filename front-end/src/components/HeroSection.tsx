@@ -1,28 +1,55 @@
-'use client'
+"use client";
 
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import Image from "next/image";
-import { ArrowRight, BookCheck, Check, CheckCheck, CheckCheckIcon, CheckCircle, CheckCircle2, CheckCircle2Icon, CheckLine, CheckSquare, ChevronUpCircle, FileCheck, LucideChartCandlestick, LucideCircleCheck, LucideCloudCheck, Sparkles, Star, TrendingUp, UserCheck } from "lucide-react";
+import {
+  ArrowRight,
+  BookCheck,
+  Check,
+  CheckCheck,
+  CheckCheckIcon,
+  CheckCircle,
+  CheckCircle2,
+  CheckCircle2Icon,
+  CheckLine,
+  CheckSquare,
+  ChevronUpCircle,
+  FileCheck,
+  LucideChartCandlestick,
+  LucideCircleCheck,
+  LucideCloudCheck,
+  Sparkles,
+  Star,
+  TrendingUp,
+  Dog,
+  DogIcon,
+  LucideDog,
+  UserPlus,
+  UserPlus2,
+} from "lucide-react";
 import { Checkbox } from "radix-ui";
 
 export function HeroSection() {
   const scrollToProducts = () => {
-    const element = document.getElementById('products');
+    const element = document.getElementById("products");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const scrollToAbout = () => {
-    const element = document.getElementById('about');
+    const element = document.getElementById("about");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       {/* Animated background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/30 to-primary/5"></div>
       <div className="absolute inset-0">
@@ -36,8 +63,8 @@ export function HeroSection() {
           <div className="text-center lg:text-left space-y-8">
             {/* Announcement Badge */}
             <Badge className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors">
-              <Sparkles className="w-4 h-4" />
-              New Exclusive Drops Available
+              <UserPlus2 className="w-4 h-4" />
+              Welcome To:
             </Badge>
 
             {/* Main Heading */}
@@ -50,7 +77,9 @@ export function HeroSection() {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-[600px] leading-relaxed">
-                Your ultimate destination for premium collectibles. Discover rare Funko Pops, exclusive Popmart figures, and limited edition treasures.
+                Your ultimate destination for premium collectibles. Discover
+                rare Funko Pops, exclusive Popmart figures, and limited edition
+                treasures.
               </p>
             </div>
 
@@ -62,7 +91,7 @@ export function HeroSection() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckSquare className="w-5 h-5 text-green-500" />
-                <span className="font-semibold">100% Authentic</span>
+                <span className="font-semibold">Authentic</span>
               </div>
               <div className="flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-purple-500" />
@@ -70,19 +99,19 @@ export function HeroSection() {
               </div>
             </div>
 
-            {/* CTA Buttons */}
+            {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 onClick={scrollToProducts}
                 className="text-base px-8 py-4 bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
               >
                 Explore Collection
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
+              <Button
+                variant="outline"
+                size="lg"
                 onClick={scrollToAbout}
                 className="text-base px-8 py-4 border-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300 transform hover:scale-105"
               >
@@ -90,34 +119,34 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          
+
           {/* Image Gallery */}
           <div className="relative">
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-6">
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-64">
                   <Image
-                    src="/images/image-placeholder.png"
+                    src="/images/funko-store.png"
                     alt="Funko Pop Collection"
                     fill
                     style={{ objectFit: "cover" }}
                     className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Badge className="absolute bottom-4 left-4 bg-primary text-white">
+                  <Badge className="absolute bottom-4 left-4 bg-blue-500 text-white">
                     Funko Pop
                   </Badge>
                 </div>
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-40">
                   <Image
-                    src="/images/image-placeholder.png"
+                    src="/images/popmart-sp-the-glimpse.png"
                     alt="Pop Art Collectibles"
                     fill
                     style={{ objectFit: "cover" }}
                     className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Badge className="absolute bottom-3 left-3 bg-accent text-white text-xs">
+                  <Badge className="absolute bottom-3 left-3 bg-indigo-900 text-white text-xs">
                     Limited
                   </Badge>
                 </div>
@@ -125,33 +154,33 @@ export function HeroSection() {
               <div className="space-y-6 mt-8">
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-40">
                   <Image
-                    src="/images/image-placeholder.png"
+                    src="/images/funko-ds-muichiro-tokito.png"
                     alt="Collectible Figures"
                     fill
                     style={{ objectFit: "cover" }}
                     className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Badge className="absolute bottom-3 left-3 bg-green-500 text-white text-xs">
+                  <Badge className="absolute bottom-3 left-3 bg-sky-500 text-white text-xs">
                     New
                   </Badge>
                 </div>
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-64">
                   <Image
-                    src="/images/image-placeholder.png"
+                    src="/images/popmart-store.png"
                     alt="Vintage Toys"
                     fill
                     style={{ objectFit: "cover" }}
                     className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Badge className="absolute bottom-4 left-4 bg-purple-500 text-white">
+                  <Badge className="absolute bottom-4 left-4 bg-red-500 text-white">
                     Popmart
                   </Badge>
                 </div>
               </div>
             </div>
-            
+
             {/* Floating elements */}
             <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/20 rounded-full animate-bounce delay-100"></div>
             <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-accent/20 rounded-full animate-bounce delay-500"></div>
