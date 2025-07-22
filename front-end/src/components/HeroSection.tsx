@@ -57,11 +57,11 @@ export function HeroSection() {
             <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
               <div className="flex items-center gap-2">
                 <Star className="w-5 h-5 text-yellow-500" />
-                <span className="font-semibold">1000+ Items</span>
+                <span className="font-semibold">100% Recommended</span>
               </div>
               <div className="flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-green-500" />
-                <span className="font-semibold">98% Authentic</span>
+                <span className="font-semibold">100% Authentic</span>
               </div>
               <div className="flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-purple-500" />
@@ -94,26 +94,26 @@ export function HeroSection() {
           <div className="relative">
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-6">
-                <div className="group relative overflow-hidden rounded-2xl shadow-2xl">
+                <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-64">
                   <Image
                     src="/images/image-placeholder.png"
                     alt="Funko Pop Collection"
-                    width={300}
-                    height={300}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <Badge className="absolute bottom-4 left-4 bg-primary text-white">
                     Funko Pop
                   </Badge>
                 </div>
-                <div className="group relative overflow-hidden rounded-2xl shadow-2xl">
+                <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-40">
                   <Image
                     src="/images/image-placeholder.png"
                     alt="Pop Art Collectibles"
-                    width={300}
-                    height={300}
-                    className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <Badge className="absolute bottom-3 left-3 bg-accent text-white text-xs">
@@ -122,26 +122,26 @@ export function HeroSection() {
                 </div>
               </div>
               <div className="space-y-6 mt-8">
-                <div className="group relative overflow-hidden rounded-2xl shadow-2xl">
+                <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-40">
                   <Image
                     src="/images/image-placeholder.png"
                     alt="Collectible Figures"
-                    width={300}
-                    height={300}
-                    className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <Badge className="absolute bottom-3 left-3 bg-green-500 text-white text-xs">
                     New
                   </Badge>
                 </div>
-                <div className="group relative overflow-hidden rounded-2xl shadow-2xl">
+                <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-64">
                   <Image
                     src="/images/image-placeholder.png"
                     alt="Vintage Toys"
-                    width={300}
-                    height={300}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <Badge className="absolute bottom-4 left-4 bg-purple-500 text-white">

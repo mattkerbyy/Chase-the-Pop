@@ -3,6 +3,10 @@
 import { ThemeProvider } from "@/src/components/ThemeProvider";
 import { Header } from "@/src/components/Header";
 import { HeroSection } from "@/src/components/HeroSection";
+import { FeaturedProducts } from "@/src/components/FeaturedProducts";
+import { AboutSection } from "@/src/components/AboutSection";
+import { ContactSection } from "@/src/components/ContactSection";
+import { Footer } from "@/src/components/Footer";
 
 export default function Home() {
   return (
@@ -11,7 +15,11 @@ export default function Home() {
         <Header />
         <main>
           <HeroSection />
+          <FeaturedProducts />
+          <AboutSection />
+          <ContactSection />
         </main>
+        <Footer />
       </div>
     </ThemeProvider>
   );

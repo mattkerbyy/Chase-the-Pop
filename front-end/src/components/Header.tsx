@@ -22,8 +22,8 @@ export function Header() {
           <Image
             src="/images/ctp-logo-circle.png"
             alt="Chase the Pop Logo"
-            width={48}
-            height={48}
+            width={512}
+            height={512}
             className="h-12 w-auto transition-transform hover:scale-105"
           />
           <div className="flex flex-col">
@@ -31,7 +31,7 @@ export function Header() {
               Chase the Pop
             </span>
             <span className="text-xs text-muted-foreground font-medium">
-              Premium Collectibles
+              Collectibles Store
             </span>
           </div>
         </div>
