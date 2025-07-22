@@ -7,6 +7,7 @@ import { FeaturedProducts } from "@/src/components/FeaturedProducts";
 import { AboutSection } from "@/src/components/AboutSection";
 import { ContactSection } from "@/src/components/ContactSection";
 import { Footer } from "@/src/components/Footer";
+import { ScrollToTop } from "@/src/components/ScrollToTop";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
           <ContactSection />
         </main>
         <Footer />
+        <ScrollToTop />
       </div>
     </ThemeProvider>
   );

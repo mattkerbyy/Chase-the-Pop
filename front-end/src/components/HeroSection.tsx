@@ -3,7 +3,8 @@
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import Image from "next/image";
-import { ArrowRight, Sparkles, Star, TrendingUp } from "lucide-react";
+import { ArrowRight, BookCheck, Check, CheckCheck, CheckCheckIcon, CheckCircle, CheckCircle2, CheckCircle2Icon, CheckLine, CheckSquare, ChevronUpCircle, FileCheck, LucideChartCandlestick, LucideCircleCheck, LucideCloudCheck, Sparkles, Star, TrendingUp, UserCheck } from "lucide-react";
+import { Checkbox } from "radix-ui";
 
 export function HeroSection() {
   const scrollToProducts = () => {
@@ -60,7 +61,7 @@ export function HeroSection() {
                 <span className="font-semibold">100% Recommended</span>
               </div>
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-green-500" />
+                <CheckSquare className="w-5 h-5 text-green-500" />
                 <span className="font-semibold">100% Authentic</span>
               </div>
               <div className="flex items-center gap-2">
