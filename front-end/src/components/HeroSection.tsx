@@ -5,30 +5,11 @@ import { Badge } from "./ui/badge";
 import Image from "next/image";
 import {
   ArrowRight,
-  BookCheck,
-  Check,
-  CheckCheck,
-  CheckCheckIcon,
-  CheckCircle,
-  CheckCircle2,
-  CheckCircle2Icon,
-  CheckLine,
   CheckSquare,
-  ChevronUpCircle,
-  FileCheck,
-  LucideChartCandlestick,
-  LucideCircleCheck,
-  LucideCloudCheck,
   Sparkles,
   Star,
-  TrendingUp,
-  Dog,
-  DogIcon,
-  LucideDog,
-  UserPlus,
   UserPlus2,
 } from "lucide-react";
-import { Checkbox } from "radix-ui";
 
 export function HeroSection() {
   const scrollToProducts = () => {
@@ -77,9 +58,8 @@ export function HeroSection() {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-[600px] leading-relaxed">
-                Your ultimate destination for premium collectibles. Discover
-                rare Funko Pops, exclusive Popmart figures, and limited edition
-                treasures.
+                Your spot for all things collectible! Hunt exclusive Funko Pops,
+                Pop Mart figures, and preorder limited-edition treasures.
               </p>
             </div>
 
@@ -162,7 +142,7 @@ export function HeroSection() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <Badge className="absolute bottom-3 left-3 bg-sky-500 text-white text-xs">
-                    New
+                    Exclusive
                   </Badge>
                 </div>
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-64">
@@ -175,7 +155,7 @@ export function HeroSection() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <Badge className="absolute bottom-4 left-4 bg-red-500 text-white">
-                    Popmart
+                    Pop Mart
                   </Badge>
                 </div>
               </div>

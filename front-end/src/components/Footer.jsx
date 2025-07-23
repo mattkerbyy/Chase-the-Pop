@@ -17,37 +17,86 @@ export function Footer() {
               />
             </div>
             <p className="text-sm text-muted-foreground">
-              Your trusted source for authentic collectibles and pop culture treasures.
+              Your trusted source for authentic collectibles and pop culture
+              treasures.
             </p>
           </div>
 
           <div>
             <h4 className="font-semibold mb-3 text-foreground">Categories</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Funko Pop</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Popmart</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Exclusives</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Chase Variants</a></li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Funko Pop
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Popmart
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Exclusives
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Chase Variants
+                </a>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold mb-3 text-foreground">Support</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Contact Us</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Shipping Info</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Returns</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">FAQ</a></li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Contact Us
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Shipping Info
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Returns
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  FAQ
+                </a>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold mb-3 text-foreground">Community</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Collector&apos;s Guide</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Trade Forum</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Newsletter</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Events</a></li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Collector&apos;s Guide
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Trade Forum
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Newsletter
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Events
+                </a>
+              </li>
             </ul>
           </div>
         </div>

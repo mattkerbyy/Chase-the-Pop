@@ -1,6 +1,12 @@
-'use client'
+"use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 
 type Theme = "light" | "dark";
 
@@ -40,7 +46,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
-  // Always provide the context, even during initial render
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className="min-h-screen bg-background transition-colors duration-300">

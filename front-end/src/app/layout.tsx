@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Chase the Pop - Collectibles Store",
-  description: "Your spot for all things collectible! Funko Pop, Pop Mart, and must-have preorders.",
+  description:
+    "Your spot for all things collectible! Hunt exclusive Funko Pops, Pop Mart figures, and preorder limited-edition treasures.",
 };
 
 export default function RootLayout({
