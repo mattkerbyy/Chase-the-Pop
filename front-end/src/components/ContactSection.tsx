@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
@@ -23,7 +21,7 @@ const contactMethods = [
     icon: Mail,
     title: "Email Us",
     description: "Get in touch via email",
-    contact: "chasethepopzgmail.com",
+    contact: "chasethepopz@gmail.com",
     color: "text-blue-500",
   },
   {
@@ -188,16 +186,12 @@ export function ContactSection() {
       id="contact"
       className="py-24 bg-background relative overflow-hidden"
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `linear-gradient(45deg, currentColor 25%, transparent 25%), linear-gradient(-45deg, currentColor 25%, transparent 25%), linear-gradient(45deg, transparent 75%, currentColor 75%), linear-gradient(-45deg, transparent 75%, currentColor 75%)`,
-            backgroundSize: "20px 20px",
-            backgroundPosition: "0 0, 0 10px, 10px -10px, -10px 0px",
-          }}
-        ></div>
+      {/* Animated background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/30 to-primary/5"></div>
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-72 h-72 bg-accent/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-700"></div>
+        <div className="absolute bottom-20 left-40 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="container relative px-4 md:px-6 mx-auto max-w-7xl">
@@ -307,7 +301,7 @@ export function ContactSection() {
                   formNoValidate
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 group disabled:opacity-50"
+                  className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 group disabled:opacity-50 transform hover:scale-105"
                 >
                   {isSubmitting ? (
                     <>
@@ -398,7 +392,7 @@ export function ContactSection() {
                             e.preventDefault();
                           }
                         }}
-                        className={`transition-all duration-300 transform hover:scale-110 ${social.color}`}
+                        className={`cursor-default transition-all duration-300 transform hover:scale-110 ${social.color}`}
                       >
                         <a
                           href={social.href}

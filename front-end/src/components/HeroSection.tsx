@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import Image from "next/image";
@@ -27,17 +25,192 @@ export function HeroSection() {
   };
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/30 to-primary/5"></div>
+    <section id="home" className="py-24 bg-background relative overflow-hidden">
+      {/* Cool Animated Background */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-72 h-72 bg-accent/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-700"></div>
-        <div className="absolute bottom-20 left-40 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+        {/* Base gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
+
+        {/* Floating collectible boxes */}
+        <div className="absolute inset-0 opacity-30">
+          {/* Large floating squares representing collectible boxes */}
+          <div className="absolute top-10 left-10 w-16 h-16 border-2 border-primary/20 rounded-lg rotate-45 animate-pulse"></div>
+          <div className="absolute top-32 right-20 w-12 h-12 border-2 border-accent/20 rounded-lg rotate-12 animate-pulse delay-1000"></div>
+          <div className="absolute bottom-40 left-1/4 w-20 h-20 border-2 border-primary/15 rounded-lg -rotate-12 animate-pulse delay-2000"></div>
+          <div className="absolute bottom-20 right-1/3 w-14 h-14 border-2 border-accent/25 rounded-lg rotate-45 animate-pulse delay-500"></div>
+          <div className="absolute top-1/2 left-1/2 w-10 h-10 border-2 border-primary/30 rounded-lg -rotate-45 animate-pulse delay-1500"></div>
+
+          {/* Medium floating elements */}
+          <div className="absolute top-20 right-1/4 w-8 h-8 bg-primary/10 rounded-full animate-bounce delay-300"></div>
+          <div className="absolute bottom-32 left-20 w-6 h-6 bg-accent/15 rounded-full animate-bounce delay-700"></div>
+          <div className="absolute top-3/4 right-10 w-12 h-12 bg-primary/5 rounded-full animate-bounce delay-1200"></div>
+        </div>
+
+        {/* Dynamic gradient waves */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-r from-transparent via-primary/10 to-transparent transform -skew-y-3 animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-full h-40 bg-gradient-to-l from-transparent via-accent/10 to-transparent transform skew-y-2 animate-pulse delay-1000"></div>
+        </div>
+
+        {/* Floating geometric shapes */}
+        <div className="absolute inset-0 opacity-20">
+          {/* Hexagons for collectible theme */}
+          <div
+            className="absolute top-16 left-1/3 w-8 h-8 transform rotate-45"
+            style={{
+              background:
+                "linear-gradient(45deg, var(--primary) 0%, transparent 50%)",
+              clipPath:
+                "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
+              animation: "float 6s ease-in-out infinite",
+            }}
+          ></div>
+
+          <div
+            className="absolute bottom-24 right-1/4 w-12 h-12 transform -rotate-12"
+            style={{
+              background:
+                "linear-gradient(135deg, var(--accent) 0%, transparent 50%)",
+              clipPath:
+                "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
+              animation: "float 8s ease-in-out infinite reverse",
+            }}
+          ></div>
+
+          {/* Diamond shapes */}
+          <div
+            className="absolute top-1/3 right-16 w-6 h-6 bg-primary/20 transform rotate-45 animate-spin"
+            style={{
+              animationDuration: "20s",
+            }}
+          ></div>
+
+          <div
+            className="absolute bottom-1/3 left-16 w-10 h-10 bg-accent/15 transform rotate-45 animate-spin"
+            style={{
+              animationDuration: "25s",
+              animationDirection: "reverse",
+            }}
+          ></div>
+        </div>
+
+        {/* Animated circuit-like connections */}
+        <div className="absolute inset-0 opacity-15">
+          <svg className="w-full h-full" viewBox="0 0 1000 600" fill="none">
+            <defs>
+              <linearGradient
+                id="lineGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="var(--primary)" stopOpacity="0" />
+                <stop offset="50%" stopColor="var(--primary)" stopOpacity="1" />
+                <stop
+                  offset="100%"
+                  stopColor="var(--primary)"
+                  stopOpacity="0"
+                />
+              </linearGradient>
+            </defs>
+
+            {/* Animated flowing lines */}
+            <path
+              d="M100,100 Q300,50 500,100 T900,100"
+              stroke="url(#lineGradient)"
+              strokeWidth="2"
+              fill="none"
+            >
+              <animate
+                attributeName="stroke-dasharray"
+                values="0,1000;1000,0;0,1000"
+                dur="8s"
+                repeatCount="indefinite"
+              />
+            </path>
+
+            <path
+              d="M100,300 Q400,250 700,300 T900,350"
+              stroke="url(#lineGradient)"
+              strokeWidth="2"
+              fill="none"
+            >
+              <animate
+                attributeName="stroke-dasharray"
+                values="1000,0;0,1000;1000,0"
+                dur="10s"
+                repeatCount="indefinite"
+              />
+            </path>
+
+            <path
+              d="M200,500 Q500,450 800,500"
+              stroke="url(#lineGradient)"
+              strokeWidth="2"
+              fill="none"
+            >
+              <animate
+                attributeName="stroke-dasharray"
+                values="0,1000;1000,0;0,1000"
+                dur="12s"
+                repeatCount="indefinite"
+              />
+            </path>
+
+            {/* Connection nodes */}
+            <circle cx="100" cy="100" r="4" fill="var(--primary)" opacity="0.5">
+              <animate
+                attributeName="r"
+                values="4;8;4"
+                dur="3s"
+                repeatCount="indefinite"
+              />
+            </circle>
+            <circle cx="500" cy="100" r="4" fill="var(--accent)" opacity="0.5">
+              <animate
+                attributeName="r"
+                values="4;8;4"
+                dur="3s"
+                repeatCount="indefinite"
+                begin="1s"
+              />
+            </circle>
+            <circle cx="900" cy="100" r="4" fill="var(--primary)" opacity="0.5">
+              <animate
+                attributeName="r"
+                values="4;8;4"
+                dur="3s"
+                repeatCount="indefinite"
+                begin="2s"
+              />
+            </circle>
+          </svg>
+        </div>
       </div>
+
+      {/* Add floating keyframes */}
+      <style jsx>{`
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(180deg);
+          }
+        }
+
+        @keyframes float-reverse {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(20px) rotate(-180deg);
+          }
+        }
+      `}</style>
 
       <div className="container relative px-4 md:px-6 py-20 mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

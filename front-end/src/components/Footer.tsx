@@ -1,7 +1,11 @@
 import { Heart } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
-export function Footer() {
+interface FooterProps {
+  onNavigate: (pageTitle: string) => void;
+}
+export function Footer({ onNavigate }: FooterProps) {
   return (
     <footer className="border-t bg-secondary/30 border-foreground/10">
       <div className="container px-4 md:px-6 py-8 mx-auto max-w-7xl">
@@ -22,80 +26,64 @@ export function Footer() {
             </p>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-3 text-foreground">Categories</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Funko Pop
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Popmart
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Exclusives
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Chase Variants
-                </a>
-              </li>
-            </ul>
-          </div>
-
+          <div className="flex justify-end gap-8"></div>
+          {/* Support */}
           <div>
             <h4 className="font-semibold mb-3 text-foreground">Support</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Contact Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Shipping Info
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Returns
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link
+                  href="/faq"
+                  className="cursor-default hover:text-primary transition-colors"
+                >
                   FAQ
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/shipping-info"
+                  className="cursor-default hover:text-primary transition-colors"
+                >
+                  Shipping Info
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/returns"
+                  className="cursor-default hover:text-primary transition-colors"
+                >
+                  Returns
+                </Link>
               </li>
             </ul>
           </div>
-
+          {/* Community */}
           <div>
             <h4 className="font-semibold mb-3 text-foreground">Community</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link
+                  href="/collectors-guide"
+                  className="cursor-default hover:text-primary transition-colors"
+                >
                   Collector&apos;s Guide
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Trade Forum
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <button
+                  onClick={() => onNavigate("Newsletter")}
+                  className="cursor-default hover:text-primary transition-colors text-left"
+                >
                   Newsletter
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <button
+                  onClick={() => onNavigate("Events")}
+                  className="cursor-default hover:text-primary transition-colors text-left"
+                >
                   Events
-                </a>
+                </button>
               </li>
             </ul>
           </div>
