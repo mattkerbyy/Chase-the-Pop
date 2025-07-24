@@ -1,11 +1,10 @@
+"use client";
+
 import { Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-interface FooterProps {
-  onNavigate: (pageTitle: string) => void;
-}
-export function Footer({ onNavigate }: FooterProps) {
+export function Footer() {
   return (
     <footer className="border-t bg-secondary/30 border-foreground/10">
       <div className="container px-4 md:px-6 py-8 mx-auto max-w-7xl">
@@ -70,20 +69,20 @@ export function Footer({ onNavigate }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate("Newsletter")}
-                  className="cursor-default hover:text-primary transition-colors text-left"
+                <Link
+                  href="/coming-soon"
+                  className="cursor-default hover:text-primary transition-colors"
                 >
                   Newsletter
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate("Events")}
-                  className="cursor-default hover:text-primary transition-colors text-left"
+                <Link
+                  href="/coming-soon"
+                  className="cursor-default hover:text-primary transition-colors"
                 >
                   Events
-                </button>
+                </Link>
               </li>
             </ul>
           </div>

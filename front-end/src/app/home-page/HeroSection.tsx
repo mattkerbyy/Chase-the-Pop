@@ -1,5 +1,7 @@
-import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
+"use client";
+
+import { Button } from "../../components/ui/button";
+import { Badge } from "../../components/ui/badge";
 import Image from "next/image";
 import {
   ArrowRight,

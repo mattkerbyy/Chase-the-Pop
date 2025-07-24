@@ -1,5 +1,5 @@
-import { Card, CardContent } from "./ui/card";
-import { Badge } from "./ui/badge";
+import { Card, CardContent } from "../../components/ui/card";
+import { Badge } from "../../components/ui/badge";
 import { Heart, Shield, Truck, Star, Users, Award, Globe } from "lucide-react";
 
 const features = [

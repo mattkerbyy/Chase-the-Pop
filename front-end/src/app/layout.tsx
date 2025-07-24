@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { ThemeProvider } from "@/src/components/ThemeProvider";
+import { Header } from "@/src/components/Header";
+import { Footer } from "@/src/components/Footer";
+import { ScrollToTop } from "@/src/components/ScrollToTop";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Chase the Pop - Collectibles Store",
@@ -20,15 +14,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en">
+      <body>
+        <ThemeProvider>
+          <div className="min-h-screen bg-background transition-colors duration-300">
+            <Header />
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <Footer />
+            <ScrollToTop />
+            <Toaster position="top-right" richColors />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

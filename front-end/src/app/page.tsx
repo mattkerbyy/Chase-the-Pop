@@ -1,47 +1,36 @@
 "use client";
 
-import { useState } from "react";
-import { ThemeProvider } from "@/src/components/ThemeProvider";
-import { Header } from "@/src/components/Header";
-import { HeroSection } from "@/src/components/HeroSection";
-import { FeaturedProducts } from "@/src/components/FeaturedProducts";
-import { AboutSection } from "@/src/components/AboutSection";
-import { ContactSection } from "@/src/components/ContactSection";
-import { Footer } from "@/src/components/Footer";
-import { ComingSoon } from "@/src/components/ComingSoon";
-import { ScrollToTop } from "@/src/components/ScrollToTop";
-import { Toaster } from "sonner";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { HeroSection } from "@/src/app/home-page/HeroSection";
+import { FeaturedProducts } from "@/src/app/home-page/FeaturedProducts";
+import { AboutSection } from "@/src/app/home-page/AboutSection";
+import { ContactSection } from "@/src/app/home-page/ContactSection";
 
-export default function Home() {
-  const [currentPage, setCurrentPage] = useState<string>("home");
+export default function HomePage() {
+  const router = useRouter();
+  const params = useSearchParams();
+  const section = params.get("scrollTo");
 
-  const handleNavigateToComingSoon = (pageTitle: string) => {
-    setCurrentPage(pageTitle);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  useEffect(() => {
+    if (section) {
+      const el = document.getElementById(section);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+      // Remove query so navigating again works without refresh
+      router.replace("/", { scroll: false });
+    }
+  }, [section, router]);
 
-  const handleBackToHome = () => {
-    setCurrentPage("home");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
   return (
-    <ThemeProvider>
-      {currentPage === "home" ? (
-        <div className="min-h-screen bg-background transition-colors duration-300">
-          <Header />
-          <main>
-            <HeroSection />
-            <FeaturedProducts />
-            <AboutSection />
-            <ContactSection />
-            <Toaster position="top-right" richColors />
-          </main>
-          <Footer onNavigate={handleNavigateToComingSoon} />
-          <ScrollToTop />
-        </div>
-      ) : (
-        <ComingSoon onBack={handleBackToHome} pageTitle={currentPage} />
-      )}
-    </ThemeProvider>
+    <>
+      <HeroSection />
+      <FeaturedProducts />
+      <AboutSection />
+      <ContactSection />
+    </>
   );
 }

@@ -1,6 +1,9 @@
-import { Button } from "./ui/button";
-import { Card, CardContent } from "./ui/card";
-import { Badge } from "./ui/badge";
+"use client";
+
+import { useRouter } from "next/navigation";
+import { Button } from "../../components/ui/button";
+import { Card, CardContent } from "../../components/ui/card";
+import { Badge } from "../../components/ui/badge";
 import { ArrowLeft, Clock, Sparkles, Construction } from "lucide-react";
 
 interface ComingSoonProps {
@@ -8,7 +11,8 @@ interface ComingSoonProps {
   pageTitle: string;
 }
 
-export function ComingSoon({ onBack, pageTitle }: ComingSoonProps) {
+function ComingSoon({ onBack, pageTitle }: ComingSoonProps) {
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-background relative overflow-hidden flex items-center justify-center">
       {/* Animated background consistent with theme */}
@@ -126,7 +130,9 @@ export function ComingSoon({ onBack, pageTitle }: ComingSoonProps) {
               {/* CTA */}
               <div className="pt-6">
                 <Button
-                  onClick={onBack}
+                  onClick={() => {
+                    router.push("/");
+                  }}
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 group px-8 transform hover:scale-105"
                 >
@@ -146,3 +152,5 @@ export function ComingSoon({ onBack, pageTitle }: ComingSoonProps) {
     </div>
   );
 }
+
+export default ComingSoon;
