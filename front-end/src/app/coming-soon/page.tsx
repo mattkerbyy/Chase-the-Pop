@@ -6,12 +6,7 @@ import { Card, CardContent } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 import { ArrowLeft, Clock, Sparkles, Construction } from "lucide-react";
 
-interface ComingSoonProps {
-  onBack: () => void;
-  pageTitle: string;
-}
-
-function ComingSoon({ onBack, pageTitle }: ComingSoonProps) {
+function ComingSoon() {
   const router = useRouter();
   return (
     <div className="min-h-screen bg-background relative overflow-hidden flex items-center justify-center">
@@ -19,8 +14,8 @@ function ComingSoon({ onBack, pageTitle }: ComingSoonProps) {
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
 
-        {/* Floating elements */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
+        {/* Floating collectible elements */}
+        <div className="absolute inset-0 opacity-80 pointer-events-none">
           <div
             className="absolute top-20 left-20 w-16 h-16 border-2 border-primary/20 rounded-lg transform-gpu will-change-transform animate-pulse"
             style={{ transform: "rotate(45deg)", backfaceVisibility: "hidden" }}
@@ -48,6 +43,16 @@ function ComingSoon({ onBack, pageTitle }: ComingSoonProps) {
               animationDelay: "0.5s",
               backfaceVisibility: "hidden",
             }}
+          ></div>
+
+          {/* Small floating elements */}
+          <div
+            className="absolute top-1/3 left-16 w-8 h-8 bg-primary/10 rounded-full transform-gpu will-change-transform animate-bounce"
+            style={{ animationDelay: "0.3s", backfaceVisibility: "hidden" }}
+          ></div>
+          <div
+            className="absolute bottom-1/3 right-16 w-6 h-6 bg-accent/15 rounded-full transform-gpu will-change-transform animate-bounce"
+            style={{ animationDelay: "0.7s", backfaceVisibility: "hidden" }}
           ></div>
         </div>
       </div>
@@ -78,9 +83,6 @@ function ComingSoon({ onBack, pageTitle }: ComingSoonProps) {
 
               {/* Title and Description */}
               <div className="space-y-4">
-                <h1 className="text-4xl md:text-6xl font-bold text-foreground">
-                  {pageTitle}
-                </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                   We&apos;re working hard to bring you something amazing! This
                   section is currently under development and will be available

@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
 import Image from "next/image";
@@ -268,7 +266,7 @@ export function HeroSection() {
                 variant="outline"
                 size="lg"
                 onClick={scrollToAbout}
-                className="text-base px-8 py-4 border-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300 transform hover:scale-105"
+                className="text-base px-8 py-4 border-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-white transition-all duration-300 transform hover:scale-105"
               >
                 Learn More
               </Button>
@@ -337,8 +335,8 @@ export function HeroSection() {
             </div>
 
             {/* Floating elements */}
-            <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/20 rounded-full animate-bounce delay-100"></div>
-            <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-accent/20 rounded-full animate-bounce delay-500"></div>
+            <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/15 rounded-full animate-bounce delay-100"></div>
+            <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-accent/15 rounded-full animate-bounce delay-500"></div>
           </div>
         </div>
       </div>

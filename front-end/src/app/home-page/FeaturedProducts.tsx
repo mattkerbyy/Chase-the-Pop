@@ -99,7 +99,7 @@ export function FeaturedProducts() {
       className="py-24 bg-background relative overflow-hidden"
     >
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-7">
         <div
           className="absolute inset-0"
           style={{

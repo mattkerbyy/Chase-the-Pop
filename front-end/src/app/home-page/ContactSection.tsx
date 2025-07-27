@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
@@ -191,9 +189,9 @@ export function ContactSection() {
       {/* Animated background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/30 to-primary/5"></div>
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-72 h-72 bg-accent/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-700"></div>
-        <div className="absolute bottom-20 left-40 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+        <div className="absolute top-20 left-20 w-72 h-72 bg-primary/7 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-72 h-72 bg-accent/7 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-700"></div>
+        <div className="absolute bottom-20 left-40 w-72 h-72 bg-primary/7 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="container relative px-4 md:px-6 mx-auto max-w-7xl">
@@ -394,7 +392,7 @@ export function ContactSection() {
                             e.preventDefault();
                           }
                         }}
-                        className={`cursor-default transition-all duration-300 transform hover:scale-110 ${social.color}`}
+                        className={`cursor-default transition-all duration-300 transform hover:scale-105 ${social.color}`}
                       >
                         <a
                           href={social.href}
