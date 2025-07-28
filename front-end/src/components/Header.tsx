@@ -16,12 +16,18 @@ export function Header() {
 
   const sections = [
     { id: "home", label: "Home" },
-    { id: "products", label: "Products" },
+    { id: "services", label: "Services" },
     { id: "about", label: "About" },
     { id: "contact", label: "Contact" },
   ];
 
+  // Setup intersection observers
   useEffect(() => {
+    // Only run observers on home page
+    if (pathname !== "/") {
+      return;
+    }
+
     const observers = new Map();
 
     const observerOptions = {
@@ -38,22 +44,62 @@ export function Header() {
       });
     };
 
-    sections.forEach(({ id }) => {
-      const element = document.getElementById(id);
-      if (element) {
-        const observer = new IntersectionObserver(
-          handleIntersection,
-          observerOptions
-        );
-        observer.observe(element);
-        observers.set(id, observer);
-      }
-    });
+    // Use a timeout to ensure DOM elements are available after navigation
+    const setupObservers = () => {
+      sections.forEach(({ id }) => {
+        const element = document.getElementById(id);
+        if (element) {
+          const observer = new IntersectionObserver(
+            handleIntersection,
+            observerOptions
+          );
+          observer.observe(element);
+          observers.set(id, observer);
+        }
+      });
+    };
+
+    // Small delay to ensure DOM is ready after navigation
+    const timeoutId = setTimeout(setupObservers, 100);
 
     return () => {
+      clearTimeout(timeoutId);
       observers.forEach((observer) => observer.disconnect());
     };
-  }, []);
+  }, [pathname]); // Add pathname as dependency
+
+  // Handle URL scroll parameter
+  useEffect(() => {
+    if (pathname === "/") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const scrollTo = urlParams.get("scrollTo");
+
+      if (scrollTo) {
+        // Small delay to ensure the page has loaded
+        setTimeout(() => {
+          const element = document.getElementById(scrollTo);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+            setActiveSection(scrollTo);
+          }
+        }, 300);
+
+        // Clean up URL parameter
+        const newUrl = window.location.pathname;
+        window.history.replaceState({}, "", newUrl);
+      }
+    }
+  }, [pathname]);
+
+  // Reset active section when not on home page
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection("");
+    } else {
+      // Set default active section when returning to home
+      setActiveSection("home");
+    }
+  }, [pathname]);
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -73,17 +119,20 @@ export function Header() {
     };
   }, [isOpen]);
 
-const scrollToSection = (sectionId: string) => {
-  if (pathname === "/") {
-    // Already on home page
-    const el = document.getElementById(sectionId);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  } else {
-    // Navigate to home first, then scroll
-    router.push(`/?scrollTo=${sectionId}`);
-    setIsOpen(false);
-  }
-};
+  const scrollToSection = (sectionId: string) => {
+    if (pathname === "/") {
+      // Already on home page
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        setActiveSection(sectionId);
+      }
+    } else {
+      // Navigate to home first, then scroll
+      router.push(`/?scrollTo=${sectionId}`);
+      setIsOpen(false);
+    }
+  };
 
   const handleMobileNavClick = (sectionId: string) => {
     scrollToSection(sectionId);
@@ -99,7 +148,7 @@ const scrollToSection = (sectionId: string) => {
             alt="Chase the Pop Logo"
             width={512}
             height={512}
-            className="h-12 w-auto transition-transform hover:scale-105"
+            className="h-12 w-auto transition-transform hover:scale-105 cursor-pointer"
             onClick={() => {
               router.push("/");
               setIsOpen(false);
@@ -210,7 +259,7 @@ const scrollToSection = (sectionId: string) => {
                     <div className="relative w-6 h-0.5 ml-2">
                       <span
                         className={`
-                          absolute left-0 top-0 rounded-full
+                          absolute left-0 top-0 h-full rounded-full
                           transition-all duration-300 ease-out
                           ${
                             activeSection === id
@@ -226,6 +275,7 @@ const scrollToSection = (sectionId: string) => {
                   <div className="relative mt-2">
                     <span
                       className={`
+                        absolute left-0 top-0 h-full
                         bg-primary rounded-full
                         transition-all duration-300 ease-out
                         ${

@@ -62,7 +62,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link
-                  href="/collectors-guide"
+                  href="/coming-soon"
                   className="cursor-default hover:text-primary transition-colors"
                 >
                   Collector&apos;s Guide

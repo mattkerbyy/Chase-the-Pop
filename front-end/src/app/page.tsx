@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { HeroSection } from "@/src/app/home-page/HeroSection";
-import { FeaturedProducts } from "@/src/app/home-page/FeaturedProducts";
+import { FeaturedServices } from "@/src/app/home-page/FeaturedServices";
 import { AboutSection } from "@/src/app/home-page/AboutSection";
 import { ContactSection } from "@/src/app/home-page/ContactSection";
 
@@ -28,7 +28,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <FeaturedProducts />
+      <FeaturedServices />
       <AboutSection />
       <ContactSection />
     </>

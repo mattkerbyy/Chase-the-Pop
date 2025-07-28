@@ -280,7 +280,7 @@ export function HeroSection() {
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-64">
                   <Image
                     src="/images/funko-store.png"
-                    alt="Funko Pop Collection"
+                    alt="Funko Store"
                     fill
                     style={{ objectFit: "cover" }}
                     className="group-hover:scale-110 transition-transform duration-700"
@@ -293,7 +293,7 @@ export function HeroSection() {
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-40">
                   <Image
                     src="/images/popmart-sp-the-glimpse.png"
-                    alt="Pop Art Collectibles"
+                    alt="Skullpanda: The Glimpse"
                     fill
                     style={{ objectFit: "cover" }}
                     className="group-hover:scale-110 transition-transform duration-700"
@@ -308,7 +308,7 @@ export function HeroSection() {
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-40">
                   <Image
                     src="/images/funko-ds-muichiro-tokito.png"
-                    alt="Collectible Figures"
+                    alt="Funko Pop: Muichiro Tokito Funko Shop (Glow Chase)"
                     fill
                     style={{ objectFit: "cover" }}
                     className="group-hover:scale-110 transition-transform duration-700"
@@ -321,7 +321,7 @@ export function HeroSection() {
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-64">
                   <Image
                     src="/images/popmart-store.png"
-                    alt="Vintage Toys"
+                    alt="Pop Mart Store"
                     fill
                     style={{ objectFit: "cover" }}
                     className="group-hover:scale-110 transition-transform duration-700"

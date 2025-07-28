@@ -392,7 +392,7 @@ export function ContactSection() {
                             e.preventDefault();
                           }
                         }}
-                        className={`cursor-default transition-all duration-300 transform hover:scale-105 ${social.color}`}
+                        className={`cursor-default transition-all duration-300 transform hover:scale-105 hover:bg-socmed ${social.color}`}
                       >
                         <a
                           href={social.href}

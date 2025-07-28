@@ -1,58 +1,75 @@
 import { Card, CardContent } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
-import { Heart, Shield, Truck, Star, Users, Award, Globe } from "lucide-react";
+import {
+  Heart,
+  Shield,
+  Star,
+  MapPin,
+  Calendar,
+  Target,
+  Users,
+} from "lucide-react";
 
 const features = [
   {
     icon: Heart,
-    title: "Passion for Collecting",
+    title: "Collector's Passion",
     description:
-      "Founded by collectors, for collectors. We understand the thrill of the hunt and the joy of finding that perfect piece.",
+      "Founded by collectors, for collectors. We understand the thrill of the hunt and the joy of finding that perfect piece for your collection.",
     color: "text-red-500",
   },
   {
     icon: Shield,
     title: "Authenticity Guaranteed",
     description:
-      "Every item is carefully inspected and verified. We stand behind the authenticity of every collectible we offer.",
+      "Every item is carefully inspected and verified. We stand behind the authenticity of every Funko Pop and Pop Mart collectible we offer.",
     color: "text-green-500",
   },
   {
-    icon: Truck,
-    title: "Secure Shipping",
+    icon: Target,
+    title: "Specialized Focus",
     description:
-      "Professional packaging and insured shipping ensure your treasures arrive safely at your doorstep.",
+      "We concentrate exclusively on Funko Pop and Pop Mart collectibles, ensuring deep expertise and comprehensive inventory in these areas.",
     color: "text-blue-500",
   },
   {
     icon: Star,
-    title: "Exclusive Access",
+    title: "Pre-Order & Sourcing",
     description:
-      "Get early access to limited releases, convention exclusives, and rare finds before they hit the market.",
+      "Our core services include pre-order management for new releases and custom sourcing for rare, discontinued, and vaulted items.",
     color: "text-yellow-500",
   },
 ];
 
-const stats = [
+const milestones = [
+  {
+    icon: Calendar,
+    label: "Founded",
+    value: "Nov 2024",
+    color: "text-primary",
+    description: "Started our journey",
+  },
+  {
+    icon: MapPin,
+    label: "Based In",
+    value: "San Fernando, Pampanga",
+    color: "text-green-500",
+    description: "Philippines",
+  },
   {
     icon: Users,
     label: "Happy Collectors",
-    value: "25,000+",
+    value: "Growing",
     color: "text-blue-500",
+    description: "Community members",
   },
   {
-    icon: Award,
-    label: "Years Experience",
-    value: "8+",
-    color: "text-green-500",
-  },
-  {
-    icon: Globe,
-    label: "Countries Served",
-    value: "50+",
+    icon: Target,
+    label: "Specialties",
+    value: "2 Main",
     color: "text-purple-500",
+    description: "Funko Pop & Pop Mart",
   },
-  { icon: Star, label: "Items Sold", value: "100K+", color: "text-yellow-500" },
 ];
 
 export function AboutSection() {
@@ -78,26 +95,32 @@ export function AboutSection() {
             <span className="text-primary"> Chase the Pop</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-[800px] mx-auto leading-relaxed">
-            More than just a store - we&apos;re a community of passionate
-            collectors united by our love for pop culture treasures
+            A fresh start in the collectibles world — bringing passion,
+            expertise, and dedication to Funko Pop and Pop Mart enthusiasts in
+            the Philippines
           </p>
         </div>
 
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-          {stats.map((stat, index) => (
+        {/* Milestones Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          {milestones.map((milestone, index) => (
             <Card
               key={index}
               className="text-center p-6 border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card"
             >
               <CardContent className="p-0 space-y-3">
-                <stat.icon className={`h-10 w-10 ${stat.color} mx-auto`} />
+                <milestone.icon
+                  className={`h-10 w-10 ${milestone.color} mx-auto`}
+                />
                 <div className="space-y-1">
-                  <div className="text-3xl font-bold text-foreground">
-                    {stat.value}
+                  <div className="text-2xl md:text-3xl font-bold text-foreground">
+                    {milestone.value}
                   </div>
                   <p className="text-sm text-muted-foreground font-medium">
-                    {stat.label}
+                    {milestone.label}
+                  </p>
+                  <p className="text-xs text-muted-foreground/80">
+                    {milestone.description}
                   </p>
                 </div>
               </CardContent>
@@ -113,17 +136,27 @@ export function AboutSection() {
                 Our Journey Begins
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Born from a passion for pop culture and collectibles, Chase the
-                Pop has been connecting collectors with their dream pieces since
-                our founding. We specialize in Funko Pop figures, Popmart
-                designer toys, and exclusive collectibles that capture the
-                essence of beloved characters and franchises.
+                <strong>Chase the Pop</strong> started in{" "}
+                <strong>November 2024</strong> from our base in{" "}
+                <strong>San Fernando, Pampanga, Philippines</strong>. Born from
+                a genuine passion for collectibles, we specialize exclusively in{" "}
+                <strong>Funko Pop and Pop Mart collectibles</strong>, ensuring
+                deep expertise and comprehensive knowledge in these specific
+                areas.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Our team consists of dedicated collectors who understand the
-                value of each piece, from common finds to holy grail rarities.
-                We&apos;re committed to building a community where collectors
-                can discover, trade, and celebrate their shared passion.
+                We focus primarily on providing{" "}
+                <strong>pre-order services</strong> for the latest releases and{" "}
+                <strong>custom sourcing services</strong> to help collectors
+                find those elusive pieces. Our team consists of dedicated
+                collectors who understand the value of each piece, from common
+                finds to holy grail rarities.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Though we&apos;re new to the scene, our commitment to
+                authenticity, customer service, and building a strong collector
+                community drives everything we do. We&apos;re here to help you
+                chase your next grail!
               </p>
             </div>
 
@@ -134,9 +167,27 @@ export function AboutSection() {
                   Our Mission
                 </h4>
                 <p className="text-muted-foreground">
-                  To create the ultimate destination where collectors can find
-                  authentic, rare, and exclusive collectibles while building
-                  lasting connections within our passionate community.
+                  To become the Philippines&apos; most trusted destination for
+                  Funko Pop and Pop Mart collectibles, connecting passionate
+                  collectors with authentic items through expert pre-order and
+                  sourcing services.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Location Highlight */}
+            <Card className="border-l-4 border-l-accent bg-accent/5 border-0 shadow-lg">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <MapPin className="h-5 w-5 text-accent" />
+                  <h4 className="font-bold text-lg text-foreground">
+                    Based in San Fernando, Pampanga
+                  </h4>
+                </div>
+                <p className="text-muted-foreground">
+                  Proudly serving collectors across the Philippines with fast,
+                  reliable shipping and local expertise in the collectibles
+                  market.
                 </p>
               </CardContent>
             </Card>

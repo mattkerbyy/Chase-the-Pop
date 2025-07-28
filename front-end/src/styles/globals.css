@@ -6,6 +6,7 @@
   --font-size: 14px;
   --background: #ffffff;
   --foreground: #000000;
+  --socmed: #121212;
   --card: #ffffff;
   --card-foreground: #000000;
   --popover: #ffffff;
@@ -83,6 +84,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-socmed: var(--socmed);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -154,9 +156,7 @@
   }
 }
 
-/**
- * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
- */
+/* Base typography. This is not applied to elements which have an ancestor with a Tailwind text class. */
 @layer base {
   :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
     h1 {
@@ -211,4 +211,9 @@
 
 html {
   font-size: var(--font-size);
+}
+
+.no-bullet {
+  list-style-type: none;
+  margin-left: 16.5;
 }

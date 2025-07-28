@@ -61,7 +61,7 @@ function FAQ() {
                       Branch pickup (Cash-on-Pick-Up, COP)
                     </span>{" "}
                     - You collect the package at a designated LBC branch and pay
-                    only the shipping fee
+                    <li className="no-bullet">only the shipping fee</li>
                   </li>
                   <li>
                     <span className="font-medium">
@@ -77,7 +77,16 @@ function FAQ() {
                   For nearby customers:
                 </h5>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Lalamove (Booking required)
+                  <li>
+                    <span className="font-medium">
+                      Lalamove (Booking required)
+                    </span>{" "}
+                    - We handle the booking, and you pay only the delivery fee
+                    in cash{" "}
+                    <li className="no-bullet">
+                      directly to the rider upon receipt
+                    </li>
+                  </li>
                 </p>
               </div>
             </div>
@@ -152,9 +161,9 @@ function FAQ() {
               </h5>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>⁃ Regular releases</li>
-                <li>⁃ Store exclusives</li>
-                <li>⁃ Limited editions</li>
+                <li>⁃ Chase variants</li>
                 <li>⁃ Convention exclusives</li>
+                <li>⁃ Limited editions</li>
               </ul>
             </div>
 
@@ -164,7 +173,7 @@ function FAQ() {
                 <li>⁃ Skullpanda collections</li>
                 <li>⁃ Hirono series</li>
                 <li>⁃ Labubu figures</li>
-                <li>⁃ And many more!</li>
+                <li>⁃ Artist collaborations</li>
               </ul>
             </div>
           </div>
@@ -278,8 +287,8 @@ function FAQ() {
             </CardContent>
           </Card>
 
-          {/* Contact CTA */}
-          <div className="text-center bg-muted/30 rounded-lg p-8">
+          {/* Contact CTP */}
+          <div className="text-center rounded-lg p-12 bg-card/50 backdrop-blur-sm border border-border">
             <h3 className="text-xl font-semibold text-foreground mb-4">
               Still have questions?
             </h3>
