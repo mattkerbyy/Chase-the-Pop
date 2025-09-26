@@ -9,7 +9,7 @@ This project is a Next.js app styled with Tailwind CSS and developed in VS Code.
 ## Features
 
 - Responsive, mobile-first UI
-- Product listing and product detail pages
+- Product listing and product detail sections
 - Reusable components with Tailwind
 - Fast local development with hot reload
 
