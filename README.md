@@ -15,7 +15,7 @@ This project is a Next.js app styled with Tailwind CSS and developed in **VS Cod
 
 ## Getting Started
 
-To view the project:
+**To view the project:**
 
 1. Clone the repository:
 
