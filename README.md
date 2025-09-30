@@ -15,7 +15,9 @@ This project is a Next.js app styled with Tailwind CSS and developed in VS Code.
 
 ## Getting Started
 
-1. Clone the repo:
+To view the project:
+
+1. Clone the repository:
 
     ```bash
     git clone https://github.com/mattkerbyy/Chase-the-Pop.git
