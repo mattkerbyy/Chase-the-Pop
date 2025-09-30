@@ -1,10 +1,10 @@
 # 🛍️ Chase the Pop - Collectibles Store
 
-Welcome to my collectibles store website project. This compact storefront is built with Next.js and Tailwind CSS to practice frontend development and showcase my business.
+Welcome to my collectibles store website project. This compact storefront is built with **Next.js** and **Tailwind CSS** to practice frontend development and showcase my business.
 
 ## About
 
-This project is a Next.js app styled with Tailwind CSS and developed in VS Code. It is a place to learn modern frontend patterns while presenting collectible items.
+This project is a Next.js app styled with Tailwind CSS and developed in **VS Code**. It is a place to learn modern frontend patterns while presenting collectible items.
 
 ## Features
 
