@@ -31,7 +31,7 @@ This project is a Next.js app styled with Tailwind CSS and developed in **VS Cod
     # yarn
     ```
 
-3. Run locally:
+3. Open your terminal and run the project locally:
 
     ```bash
     npm run dev
