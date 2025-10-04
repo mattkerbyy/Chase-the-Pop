@@ -39,7 +39,7 @@ This project is a Next.js app styled with Tailwind CSS and developed in **VS Cod
     # Open http://localhost:3000
     ```
 
-(Requires Node.js 18+ recommended)
+> Recommended: Node.js 18+ for best compatibility with Next.js 14 and newer toolchains.
 
 ## Why I Made This
 
