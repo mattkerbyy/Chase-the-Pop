@@ -47,4 +47,4 @@ I built Chase the Pop to improve my frontend skills with Next.js and Tailwind an
 
 ---
 
-Thank you for checking out my project!
+Thank you for checking out my project! If you’d like, you can support my business at https://www.facebook.com/ChasethePopFB
