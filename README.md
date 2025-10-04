@@ -21,6 +21,7 @@ This project is a Next.js app styled with Tailwind CSS and developed in **VS Cod
 
     ```bash
     git clone https://github.com/mattkerbyy/Chase-the-Pop.git
+    cd front-end
     ```
 
 2. Install dependencies:
