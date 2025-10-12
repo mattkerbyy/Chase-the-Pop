@@ -10,7 +10,7 @@ This project is a Next.js app styled with Tailwind CSS, Shadcn UI, and developed
 
 - Fully responsive layout
 - Product listing and product detail sections
-- Reusable components with Tailwind
+- Reusable components
 - Fast local development with hot reload
 
 ## Getting Started
