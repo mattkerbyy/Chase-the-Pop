@@ -1,6 +1,6 @@
 # 🛍️ Chase the Pop - Collectibles Store
 
-Welcome to my collectibles store website project. This compact storefront is built with **Next.js**, **Tailwind CSS**, and Shadcn UI to practice frontend development and showcase my business.
+Welcome to my collectibles store website project. This compact storefront is built with **Next.js**, **Tailwind CSS**, and **Shadcn UI** to practice frontend development and showcase my business.
 
 ## About
 
