@@ -43,7 +43,7 @@ This project is a Next.js app styled with Tailwind CSS, Shadcn UI, and developed
 
 ## Why I Made This
 
-I built Chase the Pop to improve my frontend skills with Next.js and Tailwind and to create a simple, attractive place to showcase and sell my collectibles.
+I built **Chase the Pop** to improve my frontend skills with Next.js and Tailwind and to create a simple, attractive place to showcase and sell my collectibles.
 
 ---
 
