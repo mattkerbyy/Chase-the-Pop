@@ -6,6 +6,12 @@ Welcome to my collectibles store website project. This compact storefront is bui
 
 This project is a Next.js app styled with Tailwind CSS and developed in VS Code. It is a place to learn modern frontend patterns while presenting collectible items.
 
+## Preview
+
+![Web preview 1](front-end/public/images/assets-preview/web-preview.png)
+
+![Web preview 2](front-end/public/images/assets-preview/web-preview-2.png)
+
 ## Features
 
 - Responsive, mobile-first UI
