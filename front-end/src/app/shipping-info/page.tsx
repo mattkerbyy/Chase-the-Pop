@@ -153,6 +153,7 @@ function ShippingInfo() {
                 Delivery Options
               </CardTitle>
             </CardHeader>
+
             <CardContent className="space-y-6">
               {/* LBC Shipping */}
               <div className="space-y-4">

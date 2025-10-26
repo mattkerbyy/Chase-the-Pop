@@ -26,7 +26,7 @@ export function HeroSection() {
 
   return (
     <section id="home" className="py-24 bg-background relative overflow-hidden">
-      {/* Cool Animated Background */}
+      {/* Animated Background */}
       <div className="absolute inset-0">
         {/* Base gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>

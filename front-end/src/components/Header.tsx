@@ -21,7 +21,7 @@ export function Header() {
     { id: "contact", label: "Contact" },
   ];
 
-  // Setup intersection observers
+  // Intersection observers
   useEffect(() => {
     // Only run observers on home page
     if (pathname !== "/") {
@@ -222,7 +222,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Navigation with Smooth Animation */}
+      {/* Mobile navigation with smooth animation */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"

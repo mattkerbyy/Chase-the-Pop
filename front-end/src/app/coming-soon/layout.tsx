@@ -6,6 +6,10 @@ export const metadata: Metadata = {
     "We're working hard to bring you something amazing! This section is currently under development and will be available soon.",
 };
 
-export default function FAQLayout({ children }: { children: React.ReactNode }) {
+export default function ComingSoonLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return <>{children}</>;
 }

@@ -130,9 +130,25 @@ export function ContactSection() {
       const emailjs = await import("@emailjs/browser");
 
       // EmailJS configurations
-      const serviceId = "service_contact";
-      const templateId = "template_contact";
-      const publicKey = "h56tHY2SnKBJ7SpZA";
+      const serviceId =
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ??
+        process.env.PUBLIC_EMAILJS_SERVICE_ID ??
+        process.env.EMAILJS_SERVICE_ID;
+      const templateId =
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ??
+        process.env.PUBLIC_EMAILJS_TEMPLATE_ID ??
+        process.env.EMAILJS_TEMPLATE_ID;
+      const publicKey =
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ??
+        process.env.PUBLIC_EMAILJS_PUBLIC_KEY ??
+        process.env.EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        toast.error(
+          "Email service not configured. Please set PUBLIC_EMAILJS_* or NEXT_PUBLIC_EMAILJS_* variables in your .env"
+        );
+        return;
+      }
 
       const templateParams = {
         from_name: `${formData.firstName} ${formData.lastName}`,

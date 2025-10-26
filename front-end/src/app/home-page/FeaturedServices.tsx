@@ -99,7 +99,7 @@ export function FeaturedServices() {
 
   const scrollToContact = () => {
     if (pathname === "/") {
-      // Already on home page - scroll directly to contact
+      // Already on home page (Scroll directly to contact)
       const contactElement = document.getElementById("contact");
       if (contactElement) {
         contactElement.scrollIntoView({ behavior: "smooth" });
@@ -142,7 +142,7 @@ export function FeaturedServices() {
           </p>
         </div>
 
-        {/* Services Grid - Improved Responsive Layout */}
+        {/* Services Grid (Improved responsive layout) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-8 justify-items-center">
           {services.map((service, index) => {
             const IconComponent = service.icon;
@@ -155,7 +155,7 @@ export function FeaturedServices() {
                   // First 3 cards take 2 columns each (2x3=6 columns total)
                   index < 3 ? "lg:col-span-2" : ""
                 } ${
-                  // Last 2 cards: position them centered (spanning 3 columns each, offset by 1.5)
+                  // Last 2 cards: position them centered (Spanning 3 columns each, offset by 1.5)
                   index === 3 ? "lg:col-span-2 lg:col-start-2" : ""
                 } ${index === 4 ? "lg:col-span-2 lg:col-start-4" : ""}`}
               >

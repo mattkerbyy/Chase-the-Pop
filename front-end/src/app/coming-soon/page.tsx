@@ -129,7 +129,7 @@ function ComingSoon() {
                 </div>
               </div>
 
-              {/* CTA */}
+              {/* Return to Home Button */}
               <div className="pt-6">
                 <Button
                   onClick={() => {

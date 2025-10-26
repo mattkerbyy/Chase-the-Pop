@@ -23,9 +23,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="min-h-screen bg-background transition-colors duration-300">
             <Header />
-            <main className="min-h-screen">
-              {children}
-            </main>
+            <main className="min-h-screen">{children}</main>
             <Footer />
             <ScrollToTop />
             <Toaster position="top-right" richColors />
