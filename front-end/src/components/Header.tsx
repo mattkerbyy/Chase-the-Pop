@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import Image from "next/image";
@@ -13,13 +13,17 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const headerRef = useRef<HTMLElement | null>(null);
 
-  const sections = [
-    { id: "home", label: "Home" },
-    { id: "services", label: "Services" },
-    { id: "about", label: "About" },
-    { id: "contact", label: "Contact" },
-  ];
+  const sections = useMemo(
+    () => [
+      { id: "home", label: "Home" },
+      { id: "services", label: "Services" },
+      { id: "about", label: "About" },
+      { id: "contact", label: "Contact" },
+    ],
+    []
+  );
 
   // Intersection observers
   useEffect(() => {
@@ -66,30 +70,111 @@ export function Header() {
       clearTimeout(timeoutId);
       observers.forEach((observer) => observer.disconnect());
     };
-  }, [pathname]); // Add pathname as dependency
+  }, [pathname, sections]); // Pathname and sections as dependencies
 
-  // Handle URL scroll parameter
+  // Handle sessionStorage / URL scroll parameter
   useEffect(() => {
     if (pathname === "/") {
+      const stored = sessionStorage.getItem("ctp-scrollTo");
       const urlParams = new URLSearchParams(window.location.search);
-      const scrollTo = urlParams.get("scrollTo");
+      const scrollTo = stored ?? urlParams.get("scrollTo");
 
       if (scrollTo) {
-        // Small delay to ensure the page has loaded
-        setTimeout(() => {
-          const element = document.getElementById(scrollTo);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
+        // Clear the stored value so repeated visits don't auto-scroll
+        sessionStorage.removeItem("ctp-scrollTo");
+
+        // If requested, reset immediately to top to avoid any premature jump
+        const prevent = sessionStorage.getItem("ctp-preventInitialScroll");
+        if (prevent) {
+          sessionStorage.removeItem("ctp-preventInitialScroll");
+          try {
+            window.scrollTo(0, 0);
+          } catch {}
+        }
+
+        // Attempt to scroll when the target element's position stabilizes.
+        // This handles layout shifts caused by images, skeletons, or async content.
+        const attemptScroll = async () => {
+          // Helper: wait for any skeletons (.animate-pulse) to disappear
+          const waitForNoPulse = async (timeoutMs = 3000) => {
+            const start = Date.now();
+            while (Date.now() - start < timeoutMs) {
+              if (!document.querySelector(".animate-pulse")) return;
+              await new Promise((res) => setTimeout(res, 100));
+            }
+          };
+
+          // Helper: wait for images within a selector to finish loading (bounded by timeout)
+          const waitForImagesIn = async (
+            selector: string,
+            timeoutMs = 3000
+          ) => {
+            const imgs = Array.from(
+              document.querySelectorAll(`${selector} img`)
+            ) as HTMLImageElement[];
+            if (imgs.length === 0) return;
+            const loaders = imgs.map((img) => {
+              if (img.complete) return Promise.resolve();
+              return new Promise((res) =>
+                img.addEventListener("load", res, { once: true })
+              );
+            });
+            await Promise.race([
+              Promise.all(loaders),
+              new Promise((res) => setTimeout(res, timeoutMs)),
+            ]);
+          };
+
+          await waitForNoPulse(700);
+          await waitForImagesIn("#services", 900);
+          await waitForImagesIn(`#${scrollTo}`, 900);
+
+          const maxAttempts = 5; // ~0.5 second (with 5ms interval)
+          const intervalMs = 5;
+          let lastTop: number | null = null;
+          let stableCount = 0; // require a couple of stable samples
+
+          for (let i = 0; i < maxAttempts; i++) {
+            const element = document.getElementById(scrollTo);
+            if (element) {
+              const rectTop = element.getBoundingClientRect().top;
+
+              if (lastTop !== null && Math.abs(rectTop - lastTop) < 2) {
+                stableCount += 1;
+              } else {
+                stableCount = 0;
+              }
+
+              lastTop = rectTop;
+
+              // Once observed a stable position a couple times, perform the scroll
+              if (stableCount >= 2) {
+                const headerHeight = headerRef.current?.offsetHeight ?? 80;
+                const top = window.scrollY + rectTop - headerHeight - 12;
+                window.scrollTo({ top, behavior: "smooth" });
+                setActiveSection(scrollTo);
+                return;
+              }
+            }
+
+            await new Promise((res) => setTimeout(res, intervalMs));
+          }
+
+          // Fallback: if we timed out but element exists, do one final scroll
+          const finalEl = document.getElementById(scrollTo);
+          if (finalEl) {
+            const rectTop = finalEl.getBoundingClientRect().top;
+            const headerHeight = headerRef.current?.offsetHeight ?? 80;
+            const top = window.scrollY + rectTop - headerHeight - 12;
+            window.scrollTo({ top, behavior: "smooth" });
             setActiveSection(scrollTo);
           }
-        }, 300);
+        };
 
-        // Clean up URL parameter
-        const newUrl = window.location.pathname;
-        window.history.replaceState({}, "", newUrl);
+        attemptScroll();
       }
     }
-  }, [pathname]);
+  }, [pathname, sections]);
 
   // Reset active section when not on home page
   useEffect(() => {
@@ -124,12 +209,23 @@ export function Header() {
       // Already on home page
       const el = document.getElementById(sectionId);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        const headerHeight = headerRef.current?.offsetHeight ?? 80;
+        const top =
+          window.scrollY + el.getBoundingClientRect().top - headerHeight - 12;
+        window.scrollTo({ top, behavior: "smooth" });
         setActiveSection(sectionId);
       }
     } else {
-      // Navigate to home first, then scroll
-      router.push(`/?scrollTo=${sectionId}`);
+      // Navigate to home first, but store desired section in sessionStorage so
+      // the home page can perform a controlled, header-offset scroll once it
+      // has stabilized. This avoids any initial incorrect jump.
+      try {
+        sessionStorage.setItem("ctp-scrollTo", sectionId);
+      } catch {
+      }
+      // Mark to prevent any initial browser jump (Home will reset to top)
+      sessionStorage.setItem("ctp-preventInitialScroll", "1");
+      router.push("/");
       setIsOpen(false);
     }
   };
@@ -140,7 +236,10 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80"
+    >
       <div className="container flex h-20 items-center justify-between px-4 md:px-6 mx-auto max-w-7xl">
         <div className="flex items-center gap-4">
           <Image
@@ -164,7 +263,7 @@ export function Header() {
           </div>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop navigation */}
         <nav className="hidden md:flex items-center gap-8">
           {sections.map(({ id, label }) => (
             <button
@@ -303,12 +402,13 @@ export function Header() {
 
       <style jsx>{`
         @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
+          try {
+            sessionStorage.setItem("ctp-scrollTo", sectionId);
+          } catch {
+            // ignore sessionStorage errors (e.g., privacy modes)
           }
-          to {
-            opacity: 1;
+          // Prevent Next.js from changing scroll position automatically
+          router.push("/", undefined, { scroll: false });
             transform: translateY(0);
           }
         }

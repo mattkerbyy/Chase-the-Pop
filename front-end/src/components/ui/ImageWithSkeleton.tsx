@@ -21,6 +21,18 @@ export function ImageWithSkeleton({
 
   const { alt, ...rest } = props as Props;
 
+  // Ensures non-priority images are lazy-loaded to improve initial page load.
+  // Narrow types without using `any` to satisfy linting rules
+  const restAny = rest as unknown as {
+    priority?: boolean;
+    loading?: "lazy" | "eager";
+  };
+
+  const finalProps: ImageProps = {
+    ...(rest as ImageProps),
+    loading: restAny.priority ? "eager" : restAny.loading ?? "lazy",
+  } as ImageProps;
+
   // If the browser already has the image cached, the img.complete flag will be true
   // After mount (Detect that and mark as loaded so it won't stay stuck with the skeleton)
   useEffect(() => {
@@ -52,7 +64,7 @@ export function ImageWithSkeleton({
       )}
 
       <Image
-        {...(rest as ImageProps)}
+        {...finalProps}
         alt={alt}
         className={`${className} ${
           loaded ? "opacity-100" : "opacity-0"
