@@ -20,7 +20,7 @@ import {
   Mail,
 } from "lucide-react";
 
-export function Returns() {
+export default function Returns() {
   const router = useRouter();
 
   return (
@@ -350,5 +350,3 @@ export function Returns() {
     </div>
   );
 }
-
-export default Returns;
