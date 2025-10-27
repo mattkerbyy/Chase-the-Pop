@@ -1,10 +1,10 @@
 # 🛍️ Chase the Pop - Collectibles Store
 
-Welcome to my collectibles store website project. This compact storefront is built with **Next.js**, **Tailwind CSS**, and **Shadcn UI** to practice frontend development and showcase my business.
+Welcome to my collectibles store website project. This compact storefront is built with **Next.js**, **Tailwind CSS**, **Shadcn UI**, and **Framer Motion** to practice frontend development and showcase my business.
 
 ## About
 
-This project is a Next.js app styled with Tailwind CSS, Shadcn UI, and developed in **VS Code**. It is a place to learn modern frontend patterns while presenting collectible items.
+This project is a Next.js app styled with Tailwind CSS, Shadcn UI, Framer Motion, and developed in **VS Code**. It is a place to learn modern frontend patterns while presenting collectible items.
 
 ## Preview
 
@@ -49,7 +49,7 @@ This project is a Next.js app styled with Tailwind CSS, Shadcn UI, and developed
 
 ## Why I Made This
 
-I built **Chase the Pop** to improve my frontend skills with Next.js, Tailwind CSS, and Shadcn UI and to create a simple, attractive place to showcase and sell my collectibles.
+I built **Chase the Pop** to improve my frontend skills with Next.js, Tailwind CSS, Shadcn UI, and Framer Motion and to create a simple, attractive place to showcase and sell my collectibles.
 
 ---
 
