@@ -1,4 +1,11 @@
+"use client";
+
 import { useState } from "react";
+import { motion } from "framer-motion";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionSection: any = (motion as any).section;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionDiv: any = (motion as any).div;
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
@@ -15,6 +22,7 @@ import {
   MessageCircleMore,
 } from "lucide-react";
 import { toast } from "sonner";
+import { Loader } from "../../components/ui/loader";
 
 const contactMethods = [
   {
@@ -197,10 +205,24 @@ export function ContactSection() {
     }
   };
 
+  const container = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
+  };
+
   return (
-    <section
+    <MotionSection
       id="contact"
       className="py-24 bg-background relative overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.12 }}
+      variants={container}
     >
       {/* Animated background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/30 to-primary/5"></div>
@@ -211,8 +233,8 @@ export function ContactSection() {
       </div>
 
       <div className="container relative px-4 md:px-6 mx-auto max-w-7xl">
-        {/* Section Header */}
-        <div className="text-center mb-20">
+        {/* Section header */}
+        <MotionDiv variants={item} className="text-center mb-20">
           <Badge className="mb-4 px-4 py-2 bg-primary/10 text-primary border-primary/20">
             Get In Touch
           </Badge>
@@ -224,210 +246,214 @@ export function ContactSection() {
             Have questions about our collection or looking for something
             specific? We&apos;d love to help you find your next treasure!
           </p>
-        </div>
+        </MotionDiv>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Form */}
-          <Card className="border-0 shadow-2xl bg-card">
-            <CardContent className="p-8 space-y-6">
-              <div className="space-y-2">
-                <h3 className="text-2xl font-bold text-foreground">
-                  Send us a message
-                </h3>
-                <p className="text-muted-foreground">
-                  We&apos;ll get back to you within 24 hours
-                </p>
-              </div>
-
-              <form onSubmit={handleSubmit} noValidate className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
-                      First Name *
-                    </label>
-                    <Input
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      placeholder="John"
-                      className="border-2 focus:border-primary transition-colors"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
-                      Last Name *
-                    </label>
-                    <Input
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      placeholder="Doe"
-                      className="border-2 focus:border-primary transition-colors"
-                      required
-                    />
-                  </div>
-                </div>
-
+          {/* Contact form */}
+          <MotionDiv variants={item}>
+            <Card className="border-0 shadow-2xl bg-card">
+              <CardContent className="p-8 space-y-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">
-                    Email *
-                  </label>
-                  <Input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="john@example.com"
-                    className="border-2 focus:border-primary transition-colors"
-                    required
-                  />
+                  <h3 className="text-2xl font-bold text-foreground">
+                    Send us a message
+                  </h3>
+                  <p className="text-muted-foreground">
+                    We&apos;ll get back to you within 24 hours
+                  </p>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">
-                    Subject *
-                  </label>
-                  <Input
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    placeholder="Looking for a specific collectible"
-                    className="border-2 focus:border-primary transition-colors"
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">
-                    Message *
-                  </label>
-                  <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Tell us about what you're looking for or any questions you have..."
-                    className="border-2 focus:border-primary transition-colors min-h-[120px]"
-                    required
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  formNoValidate
-                  size="lg"
-                  disabled={isSubmitting}
-                  className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 group disabled:opacity-50 transform hover:scale-105"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent mr-2"></div>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          {/* Contact Information */}
-          <div className="space-y-8">
-            {/* Contact Methods */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {contactMethods.map((method, index) => (
-                <Card
-                  key={index}
-                  className="group hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-card border-0 shadow-lg"
-                >
-                  <CardContent className="p-6 text-center space-y-4">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-                      <method.icon
-                        className={`h-10 w-10 ${method.color} mx-auto relative z-10 group-hover:scale-110 transition-transform duration-300`}
+                <form onSubmit={handleSubmit} noValidate className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-foreground">
+                        First Name *
+                      </label>
+                      <Input
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        placeholder="John"
+                        className="border-2 focus:border-primary transition-colors"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <h4 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
-                        {method.title}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        {method.description}
-                      </p>
-                      <p className="text-sm font-medium text-foreground">
-                        {method.contact}
-                      </p>
+                      <label className="text-sm font-medium text-foreground">
+                        Last Name *
+                      </label>
+                      <Input
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        placeholder="Doe"
+                        className="border-2 focus:border-primary transition-colors"
+                        required
+                      />
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            {/* Map Placeholder */}
-            <Card className="border-0 shadow-2xl overflow-hidden">
-              <div className="h-64 bg-gradient-to-br from-primary/20 to-accent/20 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center space-y-2">
-                    <MapPin className="h-12 w-12 text-primary mx-auto" />
-                    <h4 className="text-xl font-bold text-foreground">
-                      Visit Our Store
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Interactive map coming soon
-                    </p>
                   </div>
-                </div>
-              </div>
-            </Card>
 
-            {/* Social Media */}
-            <Card className="border-0 shadow-xl bg-card">
-              <CardContent className="p-6 text-center space-y-4">
-                <h4 className="text-xl font-bold text-foreground">
-                  Follow Our Journey
-                </h4>
-                <p className="text-muted-foreground">
-                  Stay updated with our latest finds and exclusive drops
-                </p>
-                <div className="flex justify-center gap-4">
-                  {socialLinks.map((social, index) => {
-                    return (
-                      <Button
-                        key={index}
-                        variant="outline"
-                        size="lg"
-                        asChild
-                        onClick={(e) => {
-                          if (social.href) {
-                            window.open(social.href, "_blank", "noopener");
-                          } else {
-                            e.preventDefault();
-                          }
-                        }}
-                        className={`cursor-default transition-all duration-300 transform hover:scale-105 hover:bg-socmed ${social.color}`}
-                      >
-                        <a
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Follow us on ${social.label}`}
-                        >
-                          <social.icon className="h-5 w-5 mr-2" />
-                          {social.label}
-                        </a>
-                      </Button>
-                    );
-                  })}
-                </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-foreground">
+                      Email *
+                    </label>
+                    <Input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="john@example.com"
+                      className="border-2 focus:border-primary transition-colors"
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-foreground">
+                      Subject *
+                    </label>
+                    <Input
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      placeholder="Looking for a specific collectible"
+                      className="border-2 focus:border-primary transition-colors"
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-foreground">
+                      Message *
+                    </label>
+                    <Textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Tell us about what you're looking for or any questions you have..."
+                      className="border-2 focus:border-primary transition-colors min-h-[120px]"
+                      required
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    formNoValidate
+                    size="lg"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 group disabled:opacity-50 transform hover:scale-105"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader size="sm" className="mr-2 text-white" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+                </form>
               </CardContent>
             </Card>
-          </div>
+          </MotionDiv>
+
+          {/* Contact information */}
+          <MotionDiv variants={item}>
+            <div className="space-y-8">
+              {/* Contact methods */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {contactMethods.map((method, index) => (
+                  <Card
+                    key={index}
+                    className="group hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-card border-0 shadow-lg"
+                  >
+                    <CardContent className="p-6 text-center space-y-4">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                        <method.icon
+                          className={`h-10 w-10 ${method.color} mx-auto relative z-10 group-hover:scale-110 transition-transform duration-300`}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
+                          {method.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
+                          {method.description}
+                        </p>
+                        <p className="text-sm font-medium text-foreground">
+                          {method.contact}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Map placeholder */}
+              <Card className="border-0 shadow-2xl overflow-hidden">
+                <div className="h-64 bg-gradient-to-br from-primary/20 to-accent/20 relative">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center space-y-2">
+                      <MapPin className="h-12 w-12 text-primary mx-auto" />
+                      <h4 className="text-xl font-bold text-foreground">
+                        Visit Our Store
+                      </h4>
+                      <p className="text-muted-foreground">
+                        Interactive map coming soon
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Social media */}
+              <Card className="border-0 shadow-xl bg-card">
+                <CardContent className="p-6 text-center space-y-4">
+                  <h4 className="text-xl font-bold text-foreground">
+                    Follow Our Journey
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Stay updated with our latest finds and exclusive drops
+                  </p>
+                  <div className="flex justify-center gap-4">
+                    {socialLinks.map((social, index) => {
+                      return (
+                        <Button
+                          key={index}
+                          variant="outline"
+                          size="lg"
+                          asChild
+                          onClick={(e) => {
+                            if (social.href) {
+                              window.open(social.href, "_blank", "noopener");
+                            } else {
+                              e.preventDefault();
+                            }
+                          }}
+                          className={`cursor-default transition-all duration-300 transform hover:scale-105 hover:bg-socmed ${social.color}`}
+                        >
+                          <a
+                            href={social.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Follow us on ${social.label}`}
+                          >
+                            <social.icon className="h-5 w-5 mr-2" />
+                            {social.label}
+                          </a>
+                        </Button>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </MotionDiv>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 }

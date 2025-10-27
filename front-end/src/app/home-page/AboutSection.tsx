@@ -1,3 +1,10 @@
+"use client";
+
+import { motion } from "framer-motion";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionSection: any = (motion as any).section;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionDiv: any = (motion as any).div;
 import { Card, CardContent } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 import {
@@ -73,20 +80,34 @@ const milestones = [
 ];
 
 export function AboutSection() {
+  const container = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
+  };
+
   return (
-    <section
+    <MotionSection
       id="about"
       className="py-24 bg-secondary/30 relative overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.12 }}
+      variants={container}
     >
-      {/* Background Elements */}
+      {/* Background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container relative px-4 md:px-6 mx-auto max-w-7xl">
-        {/* Section Header */}
-        <div className="text-center mb-20">
+        {/* Section header */}
+        <MotionDiv variants={item} className="text-center mb-20">
           <Badge className="mb-4 px-4 py-2 bg-primary/10 text-primary border-primary/20">
             Our Story
           </Badge>
@@ -99,10 +120,13 @@ export function AboutSection() {
             expertise, and dedication to Funko Pop and Pop Mart enthusiasts in
             the Philippines
           </p>
-        </div>
+        </MotionDiv>
 
-        {/* Milestones Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        {/* Milestones section */}
+        <MotionDiv
+          variants={item}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
+        >
           {milestones.map((milestone, index) => (
             <Card
               key={index}
@@ -126,9 +150,12 @@ export function AboutSection() {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </MotionDiv>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <MotionDiv
+          variants={item}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+        >
           {/* Content */}
           <div className="space-y-8">
             <div className="space-y-6">
@@ -160,7 +187,7 @@ export function AboutSection() {
               </p>
             </div>
 
-            {/* Mission Statement */}
+            {/* Mission statement */}
             <Card className="border-l-4 border-l-primary bg-primary/5 border-0 shadow-lg">
               <CardContent className="p-6">
                 <h4 className="font-bold text-lg text-foreground mb-3">
@@ -175,7 +202,7 @@ export function AboutSection() {
               </CardContent>
             </Card>
 
-            {/* Location Highlight */}
+            {/* Location highlight */}
             <Card className="border-l-4 border-l-accent bg-accent/5 border-0 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-3">
@@ -193,7 +220,7 @@ export function AboutSection() {
             </Card>
           </div>
 
-          {/* Features Grid */}
+          {/* Features grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {features.map((feature, index) => (
               <Card
@@ -217,8 +244,8 @@ export function AboutSection() {
               </Card>
             ))}
           </div>
-        </div>
+        </MotionDiv>
       </div>
-    </section>
+    </MotionSection>
   );
 }

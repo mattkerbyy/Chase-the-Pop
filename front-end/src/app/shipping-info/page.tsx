@@ -13,7 +13,7 @@ import {
   Camera,
   Package,
 } from "lucide-react";
-import Image from "next/image";
+import ImageWithSkeleton from "../../components/ui/ImageWithSkeleton";
 
 function ShippingInfo() {
   return (
@@ -74,9 +74,9 @@ function ShippingInfo() {
           </Badge>
         </div>
 
-        {/* Main Content */}
+        {/* Main content */}
         <div className="space-y-8">
-          {/* Page Title */}
+          {/* Page title */}
           <div className="text-center space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground">
               Shipping Information
@@ -87,7 +87,7 @@ function ShippingInfo() {
             </p>
           </div>
 
-          {/* Payment Methods */}
+          {/* Payment methods */}
           <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-2xl">
@@ -108,13 +108,14 @@ function ShippingInfo() {
                 <div className="bg-primary/5 p-4 rounded-lg border border-primary/10">
                   <div className="flex items-center gap-3 mb-2">
                     <h4 className="font-semibold text-primary">GCash</h4>
-                    <div className="overflow-hidden rounded-md">
-                      <Image
+                    <div className="overflow-hidden rounded-md w-6 h-6">
+                      <ImageWithSkeleton
                         src="/images/gcash-logo.png"
                         alt="GCash Logo"
                         width={24}
                         height={24}
                         className="object-contain image-render-crisp"
+                        skeletonClassName="bg-muted-foreground/20"
                       />
                     </div>
                   </div>
@@ -127,13 +128,14 @@ function ShippingInfo() {
                     <h4 className="font-semibold text-primary">
                       Bank Transfer
                     </h4>
-                    <div className="overflow-hidden">
-                      <Image
+                    <div className="overflow-hidden w-6 h-6">
+                      <ImageWithSkeleton
                         src="/images/bank-transfer-logo.png"
                         alt="Bank Transfer Logo"
                         width={24}
                         height={24}
                         className="object-contain image-render-crisp"
+                        skeletonClassName="bg-muted-foreground/20"
                       />
                     </div>
                   </div>
@@ -145,7 +147,7 @@ function ShippingInfo() {
             </CardContent>
           </Card>
 
-          {/* Delivery Options */}
+          {/* Delivery options */}
           <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-2xl">
@@ -155,20 +157,21 @@ function ShippingInfo() {
             </CardHeader>
 
             <CardContent className="space-y-6">
-              {/* LBC Shipping */}
+              {/* LBC shipping */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3 mb-2">
                   <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                     <Truck className="w-5 h-5 text-primary" />
                     LBC Courier (Provincial Shipping)
                   </h3>
-                  <div className="overflow-hidden rounded-md">
-                    <Image
+                  <div className="overflow-hidden rounded-md w-6 h-6">
+                    <ImageWithSkeleton
                       src="/images/lbc-logo.png"
                       alt="LBC Logo"
                       width={24}
                       height={24}
                       className="object-contain image-render-crisp"
+                      skeletonClassName="bg-muted-foreground/20"
                     />
                   </div>
                 </div>
@@ -223,13 +226,14 @@ function ShippingInfo() {
                     <MapPin className="w-5 h-5 text-accent" />
                     Lalamove (Local Delivery)
                   </h3>
-                  <div className="overflow-hidden rounded-md">
-                    <Image
+                  <div className="overflow-hidden rounded-md w-6 h-6">
+                    <ImageWithSkeleton
                       src="/images/lalamove-logo.png"
                       alt="Lalamove Logo"
                       width={24}
                       height={24}
                       className="object-contain image-render-crisp"
+                      skeletonClassName="bg-muted-foreground/20"
                     />
                   </div>
                 </div>
@@ -258,7 +262,7 @@ function ShippingInfo() {
             </CardContent>
           </Card>
 
-          {/* Shipping Schedule */}
+          {/* Shipping schedule */}
           <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-2xl">
@@ -305,7 +309,7 @@ function ShippingInfo() {
             </CardContent>
           </Card>
 
-          {/* Important Notes */}
+          {/* Important notes */}
           <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-sm border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-2xl">

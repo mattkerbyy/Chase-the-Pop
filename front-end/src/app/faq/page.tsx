@@ -77,16 +77,18 @@ function FAQ() {
                   For nearby customers:
                 </h5>
                 <p className="text-sm text-muted-foreground mt-1">
-                  <li>
-                    <span className="font-medium">
-                      Lalamove (Booking required)
-                    </span>{" "}
-                    - We handle the booking, and you pay only the delivery fee
-                    in cash{" "}
-                    <li className="no-bullet">
-                      directly to the rider upon receipt
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mt-2">
+                    <li>
+                      <span className="font-medium">
+                        Lalamove (Booking required)
+                      </span>{" "}
+                      - We handle the booking, and you pay only the delivery fee
+                      in cash{" "}
+                      <li className="no-bullet">
+                        directly to the rider upon receipt
+                      </li>
                     </li>
-                  </li>
+                  </ul>
                 </p>
               </div>
             </div>
@@ -240,9 +242,9 @@ function FAQ() {
           </Badge>
         </div>
 
-        {/* Main Content */}
+        {/* Main content */}
         <div className="space-y-8">
-          {/* Page Title */}
+          {/* Page title */}
           <div className="text-center space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground">
               Frequently Asked Questions
@@ -253,7 +255,7 @@ function FAQ() {
             </p>
           </div>
 
-          {/* FAQ Accordion */}
+          {/* FAQ accordion */}
           <Card className="border-0 shadow-2xl bg-card/80 backdrop-blur-sm">
             <CardHeader className="text-center pb-6">
               <CardTitle className="text-2xl text-foreground">

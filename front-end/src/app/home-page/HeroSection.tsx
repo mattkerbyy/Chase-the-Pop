@@ -1,6 +1,13 @@
+"use client";
+
+import { motion } from "framer-motion";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionSection: any = (motion as any).section;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionDiv: any = (motion as any).div;
 import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
-import Image from "next/image";
+import ImageWithSkeleton from "../../components/ui/ImageWithSkeleton";
 import {
   ArrowRight,
   CheckSquare,
@@ -10,8 +17,29 @@ import {
 } from "lucide-react";
 
 export function HeroSection() {
-  const scrollToProducts = () => {
-    const element = document.getElementById("products");
+  const container = {
+    hidden: { opacity: 0, y: 12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.06,
+        when: "beforeChildren",
+        duration: 0.5,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.45, ease: "easeOut" },
+    },
+  };
+  const scrollToServices = () => {
+    const element = document.getElementById("services");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -25,8 +53,15 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="py-24 bg-background relative overflow-hidden">
-      {/* Animated Background */}
+    <MotionSection
+      id="home"
+      className="py-24 bg-background relative overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={container}
+    >
+      {/* Animated background */}
       <div className="absolute inset-0">
         {/* Base gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
@@ -214,14 +249,17 @@ export function HeroSection() {
 
       <div className="container relative px-4 md:px-6 py-20 mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="text-center lg:text-left space-y-8">
-            {/* Announcement Badge */}
+          <MotionDiv
+            className="text-center lg:text-left space-y-8"
+            variants={item}
+          >
+            {/* Announcement badge */}
             <Badge className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors">
               <UserPlus2 className="w-4 h-4" />
               Welcome To:
             </Badge>
 
-            {/* Main Heading */}
+            {/* Main heading */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-tight">
                 Chase the
@@ -256,10 +294,10 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
                 size="lg"
-                onClick={scrollToProducts}
+                onClick={scrollToServices}
                 className="text-base px-8 py-4 bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
               >
-                Explore Collection
+                Explore Services
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
@@ -271,14 +309,14 @@ export function HeroSection() {
                 Learn More
               </Button>
             </div>
-          </div>
+          </MotionDiv>
 
-          {/* Image Gallery */}
-          <div className="relative">
+          {/* Image gallery */}
+          <MotionDiv className="relative" variants={item}>
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-6">
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-64">
-                  <Image
+                  <ImageWithSkeleton
                     src="/images/funko-store.png"
                     alt="Funko Store"
                     fill
@@ -291,7 +329,7 @@ export function HeroSection() {
                   </Badge>
                 </div>
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-40">
-                  <Image
+                  <ImageWithSkeleton
                     src="/images/popmart-sp-the-glimpse.png"
                     alt="Skullpanda: The Glimpse"
                     fill
@@ -304,9 +342,10 @@ export function HeroSection() {
                   </Badge>
                 </div>
               </div>
+
               <div className="space-y-6 mt-8">
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-40">
-                  <Image
+                  <ImageWithSkeleton
                     src="/images/funko-ds-muichiro-tokito.png"
                     alt="Funko Pop: Muichiro Tokito Funko Shop (Glow Chase)"
                     fill
@@ -319,7 +358,7 @@ export function HeroSection() {
                   </Badge>
                 </div>
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-64">
-                  <Image
+                  <ImageWithSkeleton
                     src="/images/popmart-store.png"
                     alt="Pop Mart Store"
                     fill
@@ -337,9 +376,9 @@ export function HeroSection() {
             {/* Floating elements */}
             <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/15 rounded-full animate-bounce delay-100"></div>
             <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-accent/15 rounded-full animate-bounce delay-500"></div>
-          </div>
+          </MotionDiv>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 }

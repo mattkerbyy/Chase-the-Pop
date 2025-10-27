@@ -1,8 +1,16 @@
+"use client";
+
 import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionSection: any = (motion as any).section;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionDiv: any = (motion as any).div;
 import { Card, CardContent } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
-import Image from "next/image";
+import ImageWithSkeleton from "../../components/ui/ImageWithSkeleton";
 import { Package, Search, Calendar, Shield, Star, Mail } from "lucide-react";
 
 const services = [
@@ -19,7 +27,7 @@ const services = [
       "Limited Editions",
     ],
     icon: Package,
-    image: "/images/image-placeholder.png",
+    image: "/images/funko-pop-collectibles.png",
     accent: "bg-blue-500",
     isHighlighted: true,
   },
@@ -36,7 +44,7 @@ const services = [
       "Artist Collaborations",
     ],
     icon: Star,
-    image: "/images/image-placeholder.png",
+    image: "/images/pop-mart-collectibles.png",
     accent: "bg-red-500",
     isHighlighted: true,
   },
@@ -53,7 +61,7 @@ const services = [
       "Priority Processing",
     ],
     icon: Calendar,
-    image: "/images/image-placeholder.png",
+    image: "/images/pre-order-services.png",
     accent: "bg-green-500",
     isHighlighted: true,
   },
@@ -70,7 +78,7 @@ const services = [
       "Holy Grail",
     ],
     icon: Search,
-    image: "/images/image-placeholder.png",
+    image: "/images/custom-sourcing.png",
     accent: "bg-orange-500",
     isHighlighted: true,
   },
@@ -79,7 +87,7 @@ const services = [
     title: "Collectible Assessment",
     subtitle: "Expert Authentication & Valuation",
     description:
-      "Free assessment services to help fellow collectors verify authenticity and estimate condition, rarity, and market value, for your reference, insurance purposes, or resale planning.",
+      "Free assessment services to help fellow collectors verify authenticity and estimate condition, rarity, and market value, for your reference, or resale planning.",
     features: [
       "Authentication Insights (Free)",
       "Condition & Rarity Overview",
@@ -87,7 +95,7 @@ const services = [
       "Collector Support & Guidance",
     ],
     icon: Shield,
-    image: "/images/image-placeholder.png",
+    image: "/images/collectible-assessment.png",
     accent: "bg-purple-500",
     isHighlighted: true,
   },
@@ -96,6 +104,42 @@ const services = [
 export function FeaturedServices() {
   const router = useRouter();
   const pathname = usePathname();
+  const [loading, setLoading] = useState(true);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  const container = {
+    hidden: { opacity: 0, y: 8 },
+    visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.05 } },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 8 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
+  };
+
+  // Simulate loading for parts that would fetch data
+  useEffect(() => {
+    const t = setTimeout(() => setLoading(false), 700);
+    return () => clearTimeout(t);
+  }, []);
+  // Observe section visibility
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsInView(entry.isIntersecting && entry.intersectionRatio > 0);
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [sectionRef]);
 
   const scrollToContact = () => {
     if (pathname === "/") {
@@ -111,11 +155,18 @@ export function FeaturedServices() {
   };
 
   return (
-    <section
+    <MotionSection
       id="services"
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={sectionRef as unknown as any}
       className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden"
+      initial="hidden"
+      animate={!loading && isInView ? "visible" : undefined}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.12 }}
+      variants={container}
     >
-      {/* Background Pattern */}
+      {/* Background pattern */}
       <div className="absolute inset-0 opacity-7">
         <div
           className="absolute inset-0"
@@ -127,7 +178,7 @@ export function FeaturedServices() {
       </div>
 
       <div className="container relative px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-        {/* Section Header */}
+        {/* Section header */}
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <Badge className="mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary border-primary/20 text-xs sm:text-sm">
             What We Offer
@@ -142,81 +193,110 @@ export function FeaturedServices() {
           </p>
         </div>
 
-        {/* Services Grid (Improved responsive layout) */}
+        {/* Services grid (Improved responsive layout) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-8 justify-items-center">
-          {services.map((service, index) => {
-            const IconComponent = service.icon;
-            return (
-              <Card
-                key={service.id}
-                className={`group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 bg-card w-full max-w-sm sm:max-w-none ${
-                  service.isHighlighted ? "ring-2 ring-primary/20" : ""
-                } ${
-                  // First 3 cards take 2 columns each (2x3=6 columns total)
-                  index < 3 ? "lg:col-span-2" : ""
-                } ${
-                  // Last 2 cards: position them centered (Spanning 3 columns each, offset by 1.5)
-                  index === 3 ? "lg:col-span-2 lg:col-start-2" : ""
-                } ${index === 4 ? "lg:col-span-2 lg:col-start-4" : ""}`}
-              >
-                {/* Service Image */}
-                <div className="relative h-40 sm:h-44 md:h-48 overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-
-                  {/* Icon */}
-                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
-                    <div
-                      className={`p-2 sm:p-3 rounded-full ${service.accent} text-white shadow-lg`}
-                    >
-                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+          {loading
+            ? // Render skeleton placeholders while loading
+              services.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-full max-w-sm sm:max-w-none bg-card rounded-md p-0 shadow-lg animate-pulse ${
+                    index < 3 ? "lg:col-span-2" : ""
+                  } ${index === 3 ? "lg:col-span-2 lg:col-start-2" : ""} ${
+                    index === 4 ? "lg:col-span-2 lg:col-start-4" : ""
+                  }`}
+                >
+                  <div className="relative h-40 sm:h-44 md:h-48 overflow-hidden bg-muted-foreground/10" />
+                  <div className="p-4 sm:p-5 lg:p-6 space-y-3 sm:space-y-4">
+                    <div className="h-4 bg-muted-foreground/10 rounded w-3/4" />
+                    <div className="h-3 bg-muted-foreground/10 rounded w-1/2" />
+                    <div className="mt-2 grid grid-cols-2 gap-2">
+                      <div className="h-3 bg-muted-foreground/10 rounded" />
+                      <div className="h-3 bg-muted-foreground/10 rounded" />
                     </div>
-                  </div>
-
-                  {/* Title Overlay */}
-                  <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
-                    <h3 className="text-white font-bold text-lg sm:text-xl mb-1 leading-tight">
-                      {service.title}
-                    </h3>
-                    <p className="text-white/80 text-xs sm:text-sm">
-                      {service.subtitle}
-                    </p>
                   </div>
                 </div>
+              ))
+            : services.map((service, index) => {
+                const IconComponent = service.icon;
+                return (
+                  <MotionDiv
+                    key={service.id}
+                    variants={item}
+                    whileHover={{ scale: 1.03 }}
+                    className={`w-full max-w-sm sm:max-w-none ${
+                      index < 3 ? "lg:col-span-2" : ""
+                    } ${index === 3 ? "lg:col-span-2 lg:col-start-2" : ""} ${
+                      index === 4 ? "lg:col-span-2 lg:col-start-4" : ""
+                    }`}
+                  >
+                    <Card
+                      className={`group relative overflow-hidden border-0 shadow-lg transition-all duration-500 transform bg-card ${
+                        service.isHighlighted ? "ring-2 ring-primary/20" : ""
+                      }`}
+                    >
+                      {/* Service image */}
+                      <div className="relative h-40 sm:h-44 md:h-48 overflow-hidden">
+                        <ImageWithSkeleton
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
 
-                {/* Service Info */}
-                <CardContent className="p-4 sm:p-5 lg:p-6 space-y-3 sm:space-y-4">
-                  <p className="text-muted-foreground leading-relaxed text-sm sm:text-base text-justify">
-                    {service.description}
-                  </p>
+                        {/* Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 
-                  {/* Features List */}
-                  <div className="space-y-2 sm:space-y-2.5">
-                    <h4 className="font-medium text-foreground text-xs sm:text-sm">
-                      Key Features:
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
-                      {service.features.map((feature, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></div>
-                          <span className="text-xs sm:text-sm text-muted-foreground leading-tight">
-                            {feature}
-                          </span>
+                        {/* Icon */}
+                        <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+                          <div
+                            className={`p-2 sm:p-3 rounded-full ${service.accent} text-white shadow-lg`}
+                          >
+                            <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                          </div>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+
+                        {/* Title overlay */}
+                        <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
+                          <h3 className="text-white font-bold text-lg sm:text-xl mb-1 leading-tight">
+                            {service.title}
+                          </h3>
+                          <p className="text-white/80 text-xs sm:text-sm">
+                            {service.subtitle}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Service info */}
+                      <CardContent className="p-4 sm:p-5 lg:p-6 space-y-3 sm:space-y-4">
+                        <p className="text-muted-foreground leading-relaxed text-sm sm:text-base text-justify">
+                          {service.description}
+                        </p>
+
+                        {/* Features list */}
+                        <div className="space-y-2 sm:space-y-2.5">
+                          <h4 className="font-medium text-foreground text-xs sm:text-sm">
+                            Key Features:
+                          </h4>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
+                            {service.features.map((feature, index) => (
+                              <div
+                                key={index}
+                                className="flex items-center gap-2"
+                              >
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></div>
+                                <span className="text-xs sm:text-sm text-muted-foreground leading-tight">
+                                  {feature}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </MotionDiv>
+                );
+              })}
         </div>
 
         {/* Contact CTP */}
@@ -239,6 +319,6 @@ export function FeaturedServices() {
           </div>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 }

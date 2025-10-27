@@ -90,7 +90,7 @@ export function Footer() {
 
         <div className="border-t mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 border-foreground/10">
           <p className="text-sm text-muted-foreground">
-            © 2025 Chase the Pop. All rights reserved.
+            © {new Date().getFullYear()} Chase the Pop. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground flex items-center gap-1">
             Made with <Heart className="h-3 w-3 text-primary" /> for collectors

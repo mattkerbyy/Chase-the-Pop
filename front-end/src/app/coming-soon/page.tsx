@@ -59,10 +59,10 @@ function ComingSoon() {
 
       <div className="container relative px-4 md:px-6 mx-auto max-w-4xl">
         <div className="text-center space-y-8">
-          {/* Main Content */}
+          {/* Main content */}
           <Card className="border-0 shadow-2xl bg-card/80 backdrop-blur-sm">
             <CardContent className="p-12 space-y-8">
-              {/* Icon and Badge */}
+              {/* Icon and badge */}
               <div className="flex flex-col items-center space-y-4">
                 <div className="relative">
                   <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center">
@@ -81,7 +81,7 @@ function ComingSoon() {
                 </Badge>
               </div>
 
-              {/* Title and Description */}
+              {/* Title and description */}
               <div className="space-y-4">
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                   We&apos;re working hard to bring you something amazing! This
@@ -90,7 +90,7 @@ function ComingSoon() {
                 </p>
               </div>
 
-              {/* Features Preview */}
+              {/* Features preview */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                 <div className="text-center space-y-3">
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
@@ -129,7 +129,7 @@ function ComingSoon() {
                 </div>
               </div>
 
-              {/* Return to Home Button */}
+              {/* Return to home button */}
               <div className="pt-6">
                 <Button
                   onClick={() => {
@@ -145,7 +145,7 @@ function ComingSoon() {
             </CardContent>
           </Card>
 
-          {/* Footer Message */}
+          {/* Footer message */}
           <p className="text-sm text-muted-foreground animate-pulse">
             Thank you for your patience as we continue to build Chase the Pop!
           </p>

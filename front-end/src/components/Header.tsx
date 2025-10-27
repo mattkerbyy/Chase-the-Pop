@@ -293,7 +293,7 @@ export function Header() {
         </nav>
       </div>
 
-      {/* Mobile Overlay */}
+      {/* Mobile overlay */}
       {isOpen && (
         <nav
           className="absolute top-full items-center w-full bg-background shadow-md md:hidden"

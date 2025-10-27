@@ -81,9 +81,9 @@ export function Returns() {
           </Badge>
         </div>
 
-        {/* Main Content */}
+        {/* Main content */}
         <div className="space-y-8">
-          {/* Page Title */}
+          {/* Page title */}
           <div className="text-center space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground">
               Returns & Exchanges
@@ -94,7 +94,7 @@ export function Returns() {
             </p>
           </div>
 
-          {/* Important Notice */}
+          {/* Important notice */}
           <Alert className="border-primary/20 bg-primary/5">
             <Shield className="w-5 h-5 text-primary" />
             <AlertDescription className="text-foreground">
@@ -105,7 +105,7 @@ export function Returns() {
             </AlertDescription>
           </Alert>
 
-          {/* Return Policy Overview */}
+          {/* Return policy overview */}
           <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-2xl">
@@ -161,7 +161,7 @@ export function Returns() {
             </CardContent>
           </Card>
 
-          {/* Acceptable Return Reasons */}
+          {/* Acceptable return reasons */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-sm">
               <CardHeader>
@@ -262,7 +262,7 @@ export function Returns() {
             </Card>
           </div>
 
-          {/* Return Process */}
+          {/* Return process */}
           <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-2xl">
@@ -317,7 +317,7 @@ export function Returns() {
             </CardContent>
           </Card>
 
-          {/* Contact for Returns */}
+          {/* Contact for returns */}
           <Alert className="border-primary/20 bg-primary/5">
             <AlertTriangle className="w-5 h-5 text-primary" />
             <AlertDescription className="text-foreground">
