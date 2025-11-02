@@ -317,7 +317,7 @@ export function HeroSection() {
               <div className="space-y-6">
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-64">
                   <ImageWithSkeleton
-                    src="/images/funko-store.png"
+                    src="/images/homePage/funko-store.png"
                     alt="Funko Store"
                     fill
                     style={{ objectFit: "cover" }}
@@ -330,7 +330,7 @@ export function HeroSection() {
                 </div>
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-40">
                   <ImageWithSkeleton
-                    src="/images/popmart-sp-the-glimpse.png"
+                    src="/images/homePage/popmart-sp-the-glimpse.png"
                     alt="Skullpanda: The Glimpse"
                     fill
                     style={{ objectFit: "cover" }}
@@ -359,7 +359,7 @@ export function HeroSection() {
                 </div>
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-64">
                   <ImageWithSkeleton
-                    src="/images/popmart-store.png"
+                    src="/images/homePage/popmart-store.png"
                     alt="Pop Mart Store"
                     fill
                     style={{ objectFit: "cover" }}

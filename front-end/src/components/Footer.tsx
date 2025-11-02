@@ -12,7 +12,7 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Image
-                src="/images/ctp-logo-circle.png"
+                src="/images/logo/ctp-logo-circle.png"
                 alt="Chase the Pop Logo"
                 width={512}
                 height={512}

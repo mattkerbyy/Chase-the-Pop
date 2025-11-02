@@ -8,9 +8,9 @@ This project is a Next.js app styled with Tailwind CSS, Shadcn UI, Framer Motion
 
 ## Preview
 
-![Web preview 1](front-end/public/images/assets-preview/web-preview.png)
+![Web preview 1](front-end/public/images/githubPreview/web-preview.png)
 
-![Web preview 2](front-end/public/images/assets-preview/web-preview-2.png)
+![Web preview 2](front-end/public/images/githubPreview/web-preview-2.png)
 
 ## Features
 

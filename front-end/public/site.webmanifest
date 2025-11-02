@@ -1,0 +1,24 @@
+{
+  "name": "Chase the Pop - Collectibles Store",
+  "short_name": "Chase the Pop",
+  "description": "Your spot for all things collectible! Hunt exclusive Funko Pops, Pop Mart figures, and preorder limited-edition treasures.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#020617",
+  "categories": ["online store", "collectibles", "toys", "preorders"],
+  "icons": [
+    {
+      "src": "/images/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

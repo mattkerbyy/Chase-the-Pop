@@ -110,7 +110,7 @@ function ShippingInfo() {
                     <h4 className="font-semibold text-primary">GCash</h4>
                     <div className="overflow-hidden rounded-md w-6 h-6">
                       <ImageWithSkeleton
-                        src="/images/gcash-logo.png"
+                        src="/images/shippingInfoPage/gcash-logo.png"
                         alt="GCash Logo"
                         width={24}
                         height={24}
@@ -130,7 +130,7 @@ function ShippingInfo() {
                     </h4>
                     <div className="overflow-hidden w-6 h-6">
                       <ImageWithSkeleton
-                        src="/images/bank-transfer-logo.png"
+                        src="/images/shippingInfoPage/bank-transfer-logo.png"
                         alt="Bank Transfer Logo"
                         width={24}
                         height={24}
@@ -166,7 +166,7 @@ function ShippingInfo() {
                   </h3>
                   <div className="overflow-hidden rounded-md w-6 h-6">
                     <ImageWithSkeleton
-                      src="/images/lbc-logo.png"
+                      src="/images/shippingInfoPage/lbc-logo.png"
                       alt="LBC Logo"
                       width={24}
                       height={24}
@@ -228,7 +228,7 @@ function ShippingInfo() {
                   </h3>
                   <div className="overflow-hidden rounded-md w-6 h-6">
                     <ImageWithSkeleton
-                      src="/images/lalamove-logo.png"
+                      src="/images/shippingInfoPage/lalamove-logo.png"
                       alt="Lalamove Logo"
                       width={24}
                       height={24}

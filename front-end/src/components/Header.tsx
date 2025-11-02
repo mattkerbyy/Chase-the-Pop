@@ -243,7 +243,7 @@ export function Header() {
       <div className="container flex h-20 items-center justify-between px-4 md:px-6 mx-auto max-w-7xl">
         <div className="flex items-center gap-4">
           <Image
-            src="/images/ctp-logo-circle.png"
+            src="/images/logo/ctp-logo-circle.png"
             alt="Chase the Pop Logo"
             width={512}
             height={512}
