@@ -4,7 +4,7 @@ Welcome to my collectibles store website project. This compact storefront is bui
 
 ## About
 
-This project is a Next.js app styled with Tailwind CSS, Shadcn UI, Framer Motion, and developed in **VS Code**. It is a place to learn modern frontend patterns while presenting collectible items.
+This project is a Next.js app styled with Tailwind CSS, Shadcn UI, Framer Motion, and developed in **VS Code**. It is a place to learn modern frontend patterns while presenting collectible items. Additionally, it was an opportunity to learn new techniques for improving SEO, including optimizing metadata, structuring content, and ensuring clean, crawl-friendly code.
 
 ## Preview
 
@@ -14,10 +14,13 @@ This project is a Next.js app styled with Tailwind CSS, Shadcn UI, Framer Motion
 
 ## Features
 
-- Fully responsive layout
 - Product listing and product detail sections
-- Reusable components
-- Fast local development with hot reload
+- Contact & Inquiry Form
+- Fully responsive layout
+- Smooth UI transitions & animations
+- Theme toggle (light / dark) with system preference support
+- PWA-ready setup: manifest, icons
+- Open Graph image + meta setup for social sharing and SEO
 
 ## Getting Started
 
