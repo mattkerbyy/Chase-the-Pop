@@ -5,6 +5,7 @@ import { Header } from "@/src/components/Header";
 import { Footer } from "@/src/components/Footer";
 import { ScrollToTop } from "@/src/components/ScrollToTop";
 import { Toaster } from "sonner";
+import VercelAnalytics from "@/src/components/VercelAnalytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chase-the-pop.vercel.app"), // UPDATE ACTUAL DOMAIN ONCE DEPLOYED
@@ -30,9 +31,7 @@ export const metadata: Metadata = {
     "limited edition",
     "limited-edition",
     "Matt Kerby Perez",
-    "matt kerby perez",
     "mattkerbyy",
-    "Kerbytes",
     "kerbytes",
   ],
   authors: [{ name: "mattkerbyy" }],
@@ -166,6 +165,7 @@ export default function RootLayout({
             <Footer />
             <ScrollToTop />
             <Toaster position="top-right" richColors />
+            <VercelAnalytics />
           </div>
         </ThemeProvider>
       </body>
