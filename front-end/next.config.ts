@@ -7,7 +7,7 @@ const securityHeaders = [
   },
   {
     key: "X-Frame-Options",
-    value: "'SAMEORIGIN'",
+    value: "SAMEORIGIN",
   },
   {
     key: "X-Content-Type-Options",
@@ -33,18 +33,19 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value:
       "default-src 'self'; " +
-      "script-src 'self' 'unsafe-inline' https://cdn.vercel-insights.com https://va.vercel-scripts.com https://*.vercel.app https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://www.googletagmanager.com; " +
-      "connect-src 'self' https://api.emailjs.com https://cdn.vercel-insights.com https://vitals.vercel-insights.com https://*.vercel.app https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://www.googletagmanager.com https://region1.google-analytics.com wss: https:; " +
-      "img-src 'self' data: https: blob: https://*.google-analytics.com https://*.googletagmanager.com; " +
-      "style-src 'self' 'unsafe-inline' https:; " +
-      "font-src 'self' https: data:; " +
-      "frame-src 'self' https://www.googletagmanager.com; " +
-      "manifest-src 'self'; " +
-      "media-src 'self' https: blob:; " +
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com va.vercel-scripts.com www.google-analytics.com www.googletagmanager.com google.com; " +
+      "style-src 'self' 'unsafe-inline'; " +
+      "font-src 'self' fonts.gstatic.com fonts.googleapis.com data:; " +
+      "img-src 'self' data: https: blob: cdn.vercel-insights.com va.vercel-scripts.com www.google-analytics.com www.googletagmanager.com www.gstatic.com csi.gstatic.com; " +
+      "media-src 'self' data:; " +
+      "connect-src 'self' cdn.vercel-insights.com vitals.vercel-insights.com va.vercel-scripts.com www.google-analytics.com www.googletagmanager.com api.emailjs.com https://chase-the-pop.vercel.app wss:; " +
+      "frame-src 'self' google.com www.google.com; " +
+      "frame-ancestors 'self'; " +
       "object-src 'none'; " +
       "base-uri 'self'; " +
       "form-action 'self'; " +
-      "frame-ancestors 'self'",
+      "upgrade-insecure-requests; " +
+      "block-all-mixed-content",
   },
 ];
 
