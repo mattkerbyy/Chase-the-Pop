@@ -8,7 +8,7 @@ import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 export function Header() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [activeSection, setActiveSection] = useState("home");
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
@@ -221,8 +221,7 @@ export function Header() {
       // has stabilized. This avoids any initial incorrect jump.
       try {
         sessionStorage.setItem("ctp-scrollTo", sectionId);
-      } catch {
-      }
+      } catch {}
       // Mark to prevent any initial browser jump (Home will reset to top)
       sessionStorage.setItem("ctp-preventInitialScroll", "1");
       router.push("/");
@@ -288,7 +287,7 @@ export function Header() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={toggleTheme}
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             className="h-10 w-10 rounded-full hover:bg-primary/10 transition-colors duration-200"
           >
             {theme === "light" ? (

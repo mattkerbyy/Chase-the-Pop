@@ -12,7 +12,7 @@ type Theme = "light" | "dark";
 
 interface ThemeContextType {
   theme: Theme;
-  toggleTheme: () => void;
+  setTheme: (theme: Theme) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -22,17 +22,31 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setThemeState] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
+  // Detect and apply theme on mount
   useEffect(() => {
-    setMounted(true);
-    const savedTheme = localStorage.getItem("theme") as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
+    const storedTheme = localStorage.getItem("theme") as Theme | null;
+
+    if (storedTheme) {
+      // User has previously set a preference; use it
+      setThemeState(storedTheme);
+    } else {
+      // Priority 1: Detect system/device theme preference
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const detectedTheme = prefersDark ? "dark" : "light";
+
+      // Priority 2: Fall back to light theme if nothing is detected
+      setThemeState(detectedTheme);
     }
+
+    setMounted(true);
   }, []);
 
+  // Apply theme to DOM and persist to localStorage
   useEffect(() => {
     if (mounted) {
       const root = window.document.documentElement;
@@ -42,15 +56,13 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     }
   }, [theme, mounted]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  const setTheme = (newTheme: Theme) => {
+    setThemeState(newTheme);
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className="min-h-screen bg-background transition-colors duration-300">
-        {children}
-      </div>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
     </ThemeContext.Provider>
   );
 }
