@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { Menu, Moon, Sun, X } from "lucide-react";
@@ -11,6 +12,7 @@ export function Header() {
   const { theme, setTheme } = useTheme();
   const [activeSection, setActiveSection] = useState("home");
   const [isOpen, setIsOpen] = useState(false);
+  const [isRotating, setIsRotating] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement | null>(null);
@@ -284,18 +286,28 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            className="h-10 w-10 rounded-full hover:bg-primary/10 transition-colors duration-200"
+          <motion.div
+            animate={isRotating ? { rotate: 360 } : { rotate: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            onAnimationComplete={() => setIsRotating(false)}
           >
-            {theme === "light" ? (
-              <Moon className="h-5 w-5 text-foreground" />
-            ) : (
-              <Sun className="h-5 w-5 text-foreground" />
-            )}
-          </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                setIsRotating(true);
+                setTheme(theme === "light" ? "dark" : "light");
+              }}
+              className="h-10 w-10 rounded-full hover:bg-primary/10 transition-colors duration-200"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <Moon className="h-5 w-5 text-foreground" />
+              ) : (
+                <Sun className="h-5 w-5 text-foreground" />
+              )}
+            </Button>
+          </motion.div>
 
           <Button
             variant="outline"
