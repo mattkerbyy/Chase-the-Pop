@@ -33,12 +33,12 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value:
       "default-src 'self'; " +
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.vercel-insights.com https://va.vercel-scripts.com https://*.vercel.app https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com; " +
-      "connect-src 'self' https://api.emailjs.com https://cdn.vercel-insights.com https://vitals.vercel-insights.com https://*.vercel.app https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com wss: https:; " +
-      "img-src 'self' data: https: blob:; " +
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' 'unsafe-hashes' https://cdn.vercel-insights.com https://va.vercel-scripts.com https://*.vercel.app https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://www.googletagmanager.com https://connect.facebook.net; " +
+      "connect-src 'self' https://api.emailjs.com https://cdn.vercel-insights.com https://vitals.vercel-insights.com https://*.vercel.app https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://www.googletagmanager.com https://region1.google-analytics.com wss: https:; " +
+      "img-src 'self' data: https: blob: https://*.google-analytics.com https://*.googletagmanager.com; " +
       "style-src 'self' 'unsafe-inline' https:; " +
       "font-src 'self' https: data:; " +
-      "frame-src 'self'; " +
+      "frame-src 'self' https://www.googletagmanager.com; " +
       "manifest-src 'self'; " +
       "media-src 'self' https: blob:; " +
       "object-src 'none'; " +
