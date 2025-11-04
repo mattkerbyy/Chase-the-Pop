@@ -30,16 +30,16 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     const storedTheme = localStorage.getItem("theme") as Theme | null;
 
     if (storedTheme) {
-      // User has previously set a preference; use it
+      // Priority 1: Check if user has previously set a preference
       setThemeState(storedTheme);
     } else {
-      // Priority 1: Detect system/device theme preference
+      // Priority 2: Detect system/device theme preference
       const prefersDark =
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches;
       const detectedTheme = prefersDark ? "dark" : "light";
 
-      // Priority 2: Fall back to light theme if nothing is detected
+      // Priority 3: Fall back to light theme if nothing is detected
       setThemeState(detectedTheme);
     }
 
