@@ -324,7 +324,7 @@ export function HeroSection() {
                     className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Badge className="absolute bottom-4 left-4 bg-blue-500 text-white">
+                  <Badge className="absolute bottom-4 left-4 z-10 bg-blue-500 text-white">
                     Funko Pop
                   </Badge>
                 </div>
@@ -337,7 +337,7 @@ export function HeroSection() {
                     className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Badge className="absolute bottom-3 left-3 bg-indigo-900 text-white text-xs">
+                  <Badge className="absolute bottom-3 left-3 z-10 bg-indigo-900 text-white text-xs">
                     Limited
                   </Badge>
                 </div>
@@ -346,14 +346,14 @@ export function HeroSection() {
               <div className="space-y-6 mt-8">
                 <div className="group relative overflow-hidden rounded-2xl shadow-2xl w-full h-40">
                   <ImageWithSkeleton
-                    src="/images/funko-ds-muichiro-tokito.png"
+                    src="/images/homePage/funko-ds-muichiro-tokito.png"
                     alt="Funko Pop: Muichiro Tokito Funko Shop (Glow Chase)"
                     fill
                     style={{ objectFit: "cover" }}
                     className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Badge className="absolute bottom-3 left-3 bg-sky-500 text-white text-xs">
+                  <Badge className="absolute bottom-3 left-3 z-10 bg-sky-500 text-white text-xs">
                     Exclusive
                   </Badge>
                 </div>
@@ -366,7 +366,7 @@ export function HeroSection() {
                     className="group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Badge className="absolute bottom-4 left-4 bg-red-500 text-white">
+                  <Badge className="absolute bottom-4 left-4 z-10 bg-red-500 text-white">
                     Pop Mart
                   </Badge>
                 </div>

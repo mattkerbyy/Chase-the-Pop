@@ -25,12 +25,12 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
-  // Detect and apply theme on mount
+  // Priority 1: Check if user has previously set a preference in localStorage
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme") as Theme | null;
 
     if (storedTheme) {
-      // Priority 1: Check if user has previously set a preference
+      // Use stored preference
       setThemeState(storedTheme);
     } else {
       // Priority 2: Detect system/device theme preference
