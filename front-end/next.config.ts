@@ -33,7 +33,7 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value:
       "default-src 'self'; " +
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' 'unsafe-hashes' https://cdn.vercel-insights.com https://va.vercel-scripts.com https://*.vercel.app https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://www.googletagmanager.com https://connect.facebook.net; " +
+      "script-src 'self' 'unsafe-inline' https://cdn.vercel-insights.com https://va.vercel-scripts.com https://*.vercel.app https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://www.googletagmanager.com; " +
       "connect-src 'self' https://api.emailjs.com https://cdn.vercel-insights.com https://vitals.vercel-insights.com https://*.vercel.app https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://www.googletagmanager.com https://region1.google-analytics.com wss: https:; " +
       "img-src 'self' data: https: blob: https://*.google-analytics.com https://*.googletagmanager.com; " +
       "style-src 'self' 'unsafe-inline' https:; " +
